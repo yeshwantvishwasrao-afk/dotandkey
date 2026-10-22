@@ -43,7 +43,7 @@
       ],
       "name": "t:sections.announcement-bar.presets.name",
       "settings": {
-        "auto_rotate": true,
+        "auto_rotate": false,
         "change_slides_speed": 3,
         "color_scheme": "scheme-4",
         "show_line_separator": true,
