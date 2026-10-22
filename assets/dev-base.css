@@ -10,4 +10,5 @@
 .dev-ys-header .header__menu-item span {
     font-size: 20px;
     font-weight: 600;
+    letter-spacing:.06em;
 }
