@@ -16,3 +16,7 @@
 {
     color:#ff40b1;
 }
+.header__menu-item:hover span
+{
+    text-decoration:none;
+}
