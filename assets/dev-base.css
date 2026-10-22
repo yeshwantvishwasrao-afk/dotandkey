@@ -38,3 +38,7 @@
     min-height:28px;
 }
 
+.header__inline-menu {
+        display: flex;
+        justify-content: space-evenly;
+    }
