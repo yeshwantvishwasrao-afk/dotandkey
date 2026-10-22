@@ -1,0 +1,10 @@
+{
+  "name": "Dotandkey",
+  "private": true,
+  "scripts": {
+    "dev": "shopify theme dev"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^3.0.0"
+  }
+}
