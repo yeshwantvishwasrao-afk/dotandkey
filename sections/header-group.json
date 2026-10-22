@@ -21,6 +21,13 @@
             "link": ""
           }
         },
+        "announcement_CUcqGh": {
+          "type": "announcement",
+          "settings": {
+            "text": "Our Offers",
+            "link": "shopify://collections/our-offers"
+          }
+        },
         "announcement_LkeRaf": {
           "type": "announcement",
           "settings": {
@@ -31,13 +38,14 @@
       },
       "block_order": [
         "announcement_gXch7X",
+        "announcement_CUcqGh",
         "announcement_LkeRaf"
       ],
       "name": "t:sections.announcement-bar.presets.name",
       "settings": {
         "auto_rotate": true,
         "change_slides_speed": 3,
-        "color_scheme": "",
+        "color_scheme": "scheme-4",
         "show_line_separator": true,
         "show_social": false,
         "enable_country_selector": false,
