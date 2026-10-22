@@ -7,7 +7,7 @@
 .dev-ys-announcement-bar .announcement-bar__link:hover {
     text-decoration: none;
 }
-.dev-ys-header
-{
-    
+.dev-ys-header .header__menu-item span {
+    font-size: 20px;
+    font-weight: 600;
 }
