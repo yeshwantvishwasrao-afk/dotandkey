@@ -11,32 +11,25 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
+    "announcement_bar_b9wQkF": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_pDYtKJ": {
+        "announcement_LkeRaf": {
           "type": "announcement",
           "settings": {
             "text": "Welcome to our store",
-            "link": "shopify://collections/all-product"
-          }
-        },
-        "announcement_LVmqhC": {
-          "type": "announcement",
-          "settings": {
-            "text": "Click for more offers",
-            "link": "shopify://collections/our-offers"
+            "link": ""
           }
         }
       },
       "block_order": [
-        "announcement_pDYtKJ",
-        "announcement_LVmqhC"
+        "announcement_LkeRaf"
       ],
+      "name": "t:sections.announcement-bar.presets.name",
       "settings": {
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "color_scheme": "scheme-1",
+        "auto_rotate": true,
+        "change_slides_speed": 3,
+        "color_scheme": "",
         "show_line_separator": true,
         "show_social": false,
         "enable_country_selector": false,
@@ -63,7 +56,7 @@
     }
   },
   "order": [
-    "announcement-bar",
+    "announcement_bar_b9wQkF",
     "header"
   ]
 }
