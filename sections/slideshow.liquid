@@ -235,7 +235,7 @@
           </div>
         {%- endif -%}
       </div>
-      
+      {% comment %}
       <button
         type="button"
         class="slider-button slider-button--next hidden"
@@ -246,7 +246,7 @@
         <span class="svg-wrapper">
           {{- 'icon-caret.svg' | inline_asset_content -}}
         </span>
-      </button>
+      </button>{% endcomment %}
 
       {%- if section.settings.auto_rotate -%}
         <button
