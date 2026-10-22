@@ -12,3 +12,7 @@
     font-weight: 600;
     letter-spacing:.06em;
 }
+.header__menu-item:hover
+{
+    color:#ff40b1;
+}
