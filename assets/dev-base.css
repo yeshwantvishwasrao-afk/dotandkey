@@ -20,7 +20,7 @@
 {
     text-decoration:none;
 }
-.header__icons .dev-ys-cart-icon
+.header__icons .dev-ys-cart-icon svg
 {
-
+    width:10px;
 }
