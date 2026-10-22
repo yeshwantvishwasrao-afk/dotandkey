@@ -4,6 +4,6 @@
     min-height:auto;
     font-size:16px;
 }
-.announcement-bar__link:hover {
+.dev-ys-announcement-bar .announcement-bar__link:hover {
     text-decoration: none;
 }
