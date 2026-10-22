@@ -11,6 +11,7 @@
     font-size: 20px;
     font-weight: 600;
     letter-spacing:.06em;
+    justify-content: center;
 }
 .header__menu-item:hover
 {
