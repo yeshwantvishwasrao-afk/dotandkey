@@ -11,8 +11,10 @@
     font-size: 20px;
     font-weight: 600;
     letter-spacing:.06em;
- display: inline-flex;
-    flex-wrap: wrap;
+ display: flex;
+ justify-content:center;
+ 
+
 }
 .header__menu-item:hover
 {
