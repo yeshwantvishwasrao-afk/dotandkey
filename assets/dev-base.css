@@ -94,8 +94,9 @@
 .slider-buttons .tabbed-collection__prev-btn {
 left: -35px;
 
-
-
+}
+.slider-buttons .tabbed-collection__next-btn {
+    right: -35px;
 }
 
 
