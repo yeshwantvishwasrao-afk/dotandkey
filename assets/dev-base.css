@@ -50,3 +50,28 @@
     }
 
  
+.pdp-details {
+  margin-top: 12px;
+}
+
+.pdp-discount {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 6px 10px;
+  background: #e8f5e9;
+  color: #207333;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.pdp-detail {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.pdp-detail strong {
+  color: #111;
+  font-weight: 600;
+}
