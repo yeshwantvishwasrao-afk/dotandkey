@@ -89,7 +89,7 @@
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "collection": "all-product",
-        "products_to_show": 23,
+        "products_to_show": 7,
         "title": "Bestseller",
         "heading_size": "h1",
         "description": "",
