@@ -36,7 +36,7 @@ dev-ys-rich-text content-container color
     min-height:28px;
 }
 
-.header__icons .dev-ys-account-icon
+.header__icons .dev-ys-account-icon svg
 {
     width:28px;
     min-height:28px;
