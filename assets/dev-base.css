@@ -96,7 +96,7 @@
 
 
 .slider-buttons . {
-        display: flex;
-    align-items: center;
-    justify-content: center;
+       position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
 }
