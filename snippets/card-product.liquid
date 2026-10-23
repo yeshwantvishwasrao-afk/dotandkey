@@ -226,12 +226,14 @@
     </p>
   {% endif %}
 
-  {% if product.metafields.custom.snowboard_length != blank %}
-    <p>
-      <strong>Snowboard Length:</strong>
-      {{ product.metafields.custom.snowboard_length.value }}
-    </p>
-  {% endif %}
+  {% assign length = product.metafields.custom.snowboard_length %}
+
+{% if length != blank %}
+  <p>
+    <strong>Snowboard Length:</strong>
+    {{ length.value }}
+  </p>
+{% endif %}
 
   {% if product.metafields.custom.material != blank %}
     <p>
