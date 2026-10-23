@@ -209,41 +209,8 @@
               {%- endif -%}
 
 
-{% assign variant = product.selected_or_first_available_variant %}
 
-<div class="pdp-details">
-
-  {% if variant.compare_at_price > variant.price %}
-    {% assign discount = variant.compare_at_price
-      | minus: variant.price
-      | times: 100.0
-      | divided_by: variant.compare_at_price
-      | round
-    %}
-
-    <p class="pdp-discount">
-      {{ discount }}% OFF
-    </p>
-  {% endif %}
-
-  {% assign length = product.metafields.custom.snowboard_length %}
-
-{% if length != blank %}
-  <p>
-    <strong>Snowboard Length:</strong>
-    {{ length.value }}
-  </p>
-{% endif %}
-
-  {% if product.metafields.custom.material != blank %}
-    <p>
-      <strong>Material:</strong>
-      {{ product.metafields.custom.material.value }}
-    </p>
-  {% endif %}
-
-</div>
-
+    
 
               {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
               {%- if card_product.quantity_price_breaks_configured? -%}
