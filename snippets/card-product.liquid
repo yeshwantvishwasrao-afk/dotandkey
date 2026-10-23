@@ -212,12 +212,15 @@
 
     
 
-              {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %} 
               {% assign variant = card_product.selected_or_first_available_variant %}
-{% assign length = card_product.metafields.custom.snowboard_length %}
-{% assign material = card_product.metafields.custom.material %}
 
-<div class="pdp-details">
+<div class="price-discount-row">
+  {% render 'price',
+    product: card_product,
+    price_class: '',
+    show_compare_at_price: true
+  %}
+
   {% if variant.compare_at_price > variant.price %}
     {% assign discount = variant.compare_at_price
       | minus: variant.price
@@ -225,13 +228,17 @@
       | divided_by: variant.compare_at_price
       | round
     %}
-    
-<span class="pdp-discount">{{ discount }}% OFF</span>
 
-
-   
+    <span class="pdp-discount">
+      {{ discount }}% OFF
+    </span>
   {% endif %}
+</div>
 
+{% assign length = card_product.metafields.custom.snowboard_length %}
+{% assign material = card_product.metafields.custom.material %}
+
+<div class="pdp-details">
   {% if length != blank %}
     <p class="pdp-detail">
       <strong>Snowboard Length:</strong> {{ length.value }}
