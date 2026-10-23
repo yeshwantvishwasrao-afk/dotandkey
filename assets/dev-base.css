@@ -17,10 +17,9 @@
 
 }
 
- dev-ys-collection .collection__title{
-     display: flex;
-        justify-content: center;
-
+.slider-buttons {
+    display: flex;
+    justify-content: space-between;
 }
 
 
