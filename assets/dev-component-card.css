@@ -1,0 +1,17 @@
+
+.pdp-details {
+  margin: 16px 0;
+}
+
+.pdp-discount {
+  display: inline-block;
+  background: #e8f5e9;
+  color: #207333;
+  padding: 6px 10px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.pdp-details p {
+  margin: 8px 0;
+}
