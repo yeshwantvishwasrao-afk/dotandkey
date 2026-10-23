@@ -168,7 +168,7 @@
         <div class="slider-buttons">
           <button
             type="button"
-            class="slider-button slider-button--prev"
+            class="slider-button slider-button--prev hidden"
             name="previous"
             aria-label="{{ 'general.slider.previous_slide' | t }}"
             aria-controls="Slider-{{ section.id }}"
@@ -178,14 +178,14 @@
             </span>
           </button>
           <div class="slider-counter caption">
-            <span class="slider-counter--current">1</span>
+            <span class="slider-counter--current hidden">1</span>
             <span aria-hidden="true"> / </span>
             <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
             <span class="slider-counter--total">{{ products_to_display }}</span>
           </div>
           <button
             type="button"
-            class="slider-button slider-button--next"
+            class="slider-button slider-button--next hidden"
             name="next"
             aria-label="{{ 'general.slider.next_slide' | t }}"
             aria-controls="Slider-{{ section.id }}"
