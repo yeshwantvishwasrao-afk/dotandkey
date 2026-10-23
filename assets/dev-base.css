@@ -17,8 +17,11 @@
 
 }
 
+dev-ys-collection .title inline-richtext{
+      display: flex;
+     justify-content: center;
 
-dev-ys-rich-text content-container color
+}
 
 
 
@@ -47,9 +50,4 @@ dev-ys-rich-text content-container color
         justify-content: space-evenly;
     }
 
-    .dev-ys-title inline-richtext {
-
-     display: flex;
-     justify-content: center;
-
-    }
+ 
