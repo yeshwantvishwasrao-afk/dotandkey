@@ -661,7 +661,11 @@
   {% endif %}
 </product-info>
 
+
+
 {% assign variant = product.selected_or_first_available_variant %}
+{% assign length = product.metafields.custom.snowboard_length %}
+{% assign material = product.metafields.custom.material %}
 
 <div class="pdp-details">
 
@@ -675,21 +679,23 @@
     <p class="pdp-discount">{{ discount }}% OFF</p>
   {% endif %}
 
-  {% if product.metafields.custom.snowboard_length != blank %}
-    <p>
+  {% if length != blank %}
+    <p class="pdp-detail">
       <strong>Snowboard Length:</strong>
-      {{ product.metafields.custom.snowboard_length.value }}
+      {{ length.value }}
     </p>
   {% endif %}
 
-  {% if product.metafields.custom.material != blank %}
-    <p>
+  {% if material != blank %}
+    <p class="pdp-detail">
       <strong>Material:</strong>
-      {{ product.metafields.custom.material.value }}
+      {{ material.value }}
     </p>
   {% endif %}
 
 </div>
+
+
 
 
 
