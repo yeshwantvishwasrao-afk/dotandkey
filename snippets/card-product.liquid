@@ -213,10 +213,7 @@
     
 
               {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
-              {%- if card_product.quantity_price_breaks_configured? -%}
-
-                
-{% assign variant = card_product.selected_or_first_available_variant %}
+              {% assign variant = card_product.selected_or_first_available_variant %}
 {% assign length = card_product.metafields.custom.snowboard_length %}
 {% assign material = card_product.metafields.custom.material %}
 
@@ -243,7 +240,9 @@
     </p>
   {% endif %}
 </div>
+              {%- if card_product.quantity_price_breaks_configured? -%}
 
+                
 
 
 
