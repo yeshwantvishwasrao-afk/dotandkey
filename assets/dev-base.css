@@ -17,11 +17,12 @@
 
 }
 
- dev-ys-collection__title .title inline-richtext{
+ dev-ys-collection__title .title inline-richtext h1 scroll-trigger animate--slide-in{
      display: flex;
         justify-content: center;
 
 }
+
 
 
 .header__menu-item:hover
