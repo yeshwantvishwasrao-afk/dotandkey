@@ -84,7 +84,7 @@
       {%- if section.settings.auto_rotate -%}
         <button
           type="button"
-          class="slideshow__autoplay slider-button{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
+          class="slideshow__autoplay slider-button hidden{% if section.settings.auto_rotate == false %} slideshow__autoplay--paused{% endif %}"
           aria-label="{{ 'sections.slideshow.pause_slideshow' | t }}"
         >
           <span class="svg-wrapper">
