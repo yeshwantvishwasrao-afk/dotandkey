@@ -17,12 +17,11 @@
 
 }
 
-dev-ys-collection .title inline-richtext{
-      display: flex;
-     justify-content: center;
+.dev-ys-collection .title inline-richtext{
+     display: flex;
+        justify-content: center;
 
 }
-
 
 
 .header__menu-item:hover
