@@ -9,23 +9,23 @@
  */
 {
   "sections": {
-    "rich_text_TtXdRh": {
+    "rich_text_XpbBCg": {
       "type": "rich-text",
       "blocks": {
-        "heading_a9PzBD": {
+        "heading_xrhDBQ": {
           "type": "heading",
           "settings": {
             "heading": "Talk about your brand",
             "heading_size": "h1"
           }
         },
-        "text_E7DRjq": {
+        "text_n9GYpy": {
           "type": "text",
           "settings": {
             "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
           }
         },
-        "button_XBtnWU": {
+        "button_68DGNy": {
           "type": "button",
           "settings": {
             "button_label": "Button label",
@@ -38,9 +38,9 @@
         }
       },
       "block_order": [
-        "heading_a9PzBD",
-        "text_E7DRjq",
-        "button_XBtnWU"
+        "heading_xrhDBQ",
+        "text_n9GYpy",
+        "button_68DGNy"
       ],
       "name": "t:sections.rich-text.presets.name",
       "settings": {
@@ -174,7 +174,7 @@
     }
   },
   "order": [
-    "rich_text_TtXdRh",
+    "rich_text_XpbBCg",
     "slideshow_gGfLxn",
     "featured_collection"
   ]
