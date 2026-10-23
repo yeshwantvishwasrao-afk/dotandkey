@@ -117,9 +117,8 @@ left: 10px;
 
 
     .scroll-trigger:not(.scroll-trigger--offscreen).animate--slide-in {
-    
-            position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-
+  
+    position: relative;
+    padding: 0 40px;
+}
     }
