@@ -17,7 +17,7 @@
 
 }
 
- .dev-ys-title inline-richtext .h1 scroll-trigger animate--slide-in{
+ dev-ys-collection__title .title inline-richtext{
      display: flex;
         justify-content: center;
 
