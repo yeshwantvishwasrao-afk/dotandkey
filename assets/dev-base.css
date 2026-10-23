@@ -47,7 +47,7 @@ dev-ys-rich-text content-container color
         justify-content: space-evenly;
     }
 
-    .h2.title.inline-richtext.h1.scroll-trigger.animate--slide-in {
+    .dev-ys-title inline-richtext {
 
      display: flex;
      justify-content: center;
