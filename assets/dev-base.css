@@ -46,3 +46,10 @@ dev-ys-rich-text content-container color
         display: flex;
         justify-content: space-evenly;
     }
+
+    .h2.title.inline-richtext.h1.scroll-trigger.animate--slide-in {
+
+     display: flex;
+     justify-content: center;
+
+    }
