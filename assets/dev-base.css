@@ -303,3 +303,12 @@
     margin-bottom: 20px;
   }
 }
+
+
+
+
+
+
+.dev-tabs__panel[hidden] {
+  display: block !important;
+}
