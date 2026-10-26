@@ -73,14 +73,11 @@
 }
 
 .pdp-discount {
-  display: inline-block;
-  margin: 0 0 8px;
-  padding: 5px 8px;
-  background: #e8f5e9;
-  color: #207333;
-  font-size: 13px;
-  font-weight: 600;
-  border-radius: 4px;
+      display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: auto;
+}
 }
 
 .pdp-detail {
