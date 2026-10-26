@@ -55,9 +55,10 @@
       </h2>
     </div>
 
-    <!-- COLLECTION TABS -->
+   
     
-<div class="dev-tabs__navigation page-width">
+<!-- Separate arrow navigation -->
+<div class="dev-tabs__arrows page-width">
   <button
     type="button"
     class="dev-tabs__arrow dev-tabs__prev"
@@ -67,25 +68,6 @@
     &#10094;
   </button>
 
-  <div class="dev-tabs__buttons" role="tablist">
-    {% for block in section.blocks %}
-      {% assign tab_collection = block.settings.tab_collection %}
-
-      <button
-        type="button"
-        class="dev-tabs__button{% if forloop.first %} active{% endif %}"
-        id="tab-{{ section.id }}-{{ block.id }}"
-        role="tab"
-        aria-controls="panel-{{ section.id }}-{{ block.id }}"
-        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
-        data-tab-button
-        {{ block.shopify_attributes }}
-      >
-        {{ block.settings.tab_name | default: tab_collection.title | default: 'Collection' | escape }}
-      </button>
-    {% endfor %}
-  </div>
-
   <button
     type="button"
     class="dev-tabs__arrow dev-tabs__next"
@@ -94,6 +76,25 @@
   >
     &#10095;
   </button>
+</div>
+
+<!-- Independent tabs container -->
+<div class="dev-tabs__buttons page-width" role="tablist">
+  {% for block in section.blocks %}
+    {% assign tab_collection = block.settings.tab_collection %}
+
+    <button
+      type="button"
+      class="dev-tabs__button{% if forloop.first %} active{% endif %}"
+      id="tab-{{ section.id }}-{{ block.id }}"
+      role="tab"
+      aria-controls="panel-{{ section.id }}-{{ block.id }}"
+      aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+      data-tab-button
+    >
+      {{ block.settings.tab_name | default: tab_collection.title | default: 'Collection' | escape }}
+    </button>
+  {% endfor %}
 </div>
 
 
