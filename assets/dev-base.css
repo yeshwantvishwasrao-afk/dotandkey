@@ -136,8 +136,7 @@ left: 10px;
   }
 }
 
-/* Mobile */
-@media screen and (max-width: 767px) {
+ 
   .collection-tabs .tabs-heading {
     font-size: 30px;
   }
