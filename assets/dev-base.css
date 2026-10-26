@@ -95,10 +95,10 @@
 }
 
 .price-discount-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+     display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: auto;
 }
 
 .price-discount-row .price,
