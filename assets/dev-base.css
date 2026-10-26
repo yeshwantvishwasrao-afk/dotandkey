@@ -215,8 +215,8 @@
 ======================================== */
 
 .dev-tabs__layout > .dev-tabs__arrow {
-  position: absolute;
-  top: 50%;
+    display: block;
+    vertical-align: middle;
   transform: translateY(-50%);
   z-index: 2;
   display: flex;
