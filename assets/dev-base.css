@@ -142,9 +142,9 @@
 */
 
 .dev-tabs__arrows {
-  position: relative;
-  display: flex;
-  align-items: center;
+      display: block;
+    vertical-align: middle;
+
   justify-content: space-between;
   width: 100%;
   min-height: 40px;
