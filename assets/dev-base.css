@@ -122,71 +122,54 @@ left: 10px;
 
 
 
-/* Bestseller heading */
+
+/* Heading */
 .collection-tabs .tabs-heading {
   text-align: center;
   font-size: 40px;
-  margin: 0 0 30px;
   font-weight: 600;
+  margin-bottom: 28px;
 }
 
-/* Tabs container */
+/* Tabs row */
 .collection-tabs .tabs-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 36px;
-  margin: 0 auto 30px;
 }
 
-/* All tabs */
+/* Tab buttons */
 .collection-tabs .tab-button {
   min-width: 160px;
   padding: 12px 28px;
-  background: #f3f3f3;
-  color: #24364b;
   border: 1px solid transparent;
   border-radius: 13px;
+  background: #f3f3f3;
+  color: #24364b;
   font-size: 24px;
-  font-weight: 400;
-  line-height: 1.4;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
-/* Selected tab */
+/* Active tab */
 .collection-tabs .tab-button.active {
   background: #fff;
   color: #ff2995;
-  border: 1px solid #ff2995;
+  border-color: #ff2995;
   box-shadow: 0 2px 5px rgba(255, 41, 149, 0.12);
 }
 
-/* Hover effect */
+/* Hover */
 .collection-tabs .tab-button:hover {
   border-color: #ff2995;
   color: #ff2995;
 }
 
-/* Tablet */
-@media screen and (max-width: 991px) {
-  .collection-tabs .tabs-buttons {
-    gap: 14px;
-  }
-
-  .collection-tabs .tab-button {
-    min-width: 130px;
-    font-size: 18px;
-    padding: 10px 20px;
-  }
-}
-
 /* Mobile */
-@media screen and (max-width: 767px) {
+@media (max-width: 767px) {
   .collection-tabs .tabs-heading {
     font-size: 30px;
-    margin-bottom: 22px;
   }
 
   .collection-tabs .tabs-buttons {
@@ -195,7 +178,7 @@ left: 10px;
 
   .collection-tabs .tab-button {
     min-width: auto;
-    font-size: 15px;
     padding: 10px 16px;
+    font-size: 16px;
   }
 }
