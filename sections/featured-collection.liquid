@@ -1,4 +1,3 @@
-
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
@@ -64,8 +63,12 @@
     display: none !important;
   }
 
-  .collection-heading {
-    margin-bottom: 20px;
+  .collection-tabs-{{ section.id }} .tab-panel {
+    width: 100%;
+  }
+
+  .collection-tabs-{{ section.id }} .collection__view-all {
+    margin-top: 30px;
   }
 
   @media screen and (max-width: 749px) {
@@ -80,42 +83,26 @@
   }
 {%- endstyle -%}
 
-{%- liquid
-  assign products_to_display = section.settings.collection.all_products_count
-
-  if section.settings.collection.all_products_count > section.settings.products_to_show
-    assign products_to_display = section.settings.products_to_show
-    assign more_in_collection = true
-  else
-    assign more_in_collection = false
-  endif
--%}
-
-<div class="dev-ys-color-{{ section.settings.color_scheme }} isolate gradient">
+<div class="color-{{ section.settings.color_scheme }} isolate gradient">
   <div
     class="collection section-{{ section.id }}-padding{% if section.settings.full_width %} collection--full-width{% endif %}"
     id="collection-{{ section.id }}"
     data-id="{{ section.id }}"
   >
 
-    <!-- Bestseller heading -->
+    <!-- Bestseller is only the heading -->
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width">
       <h2 class="title inline-richtext {{ section.settings.heading_size }}">
-        {% if section.settings.title != blank %}
-          {{ section.settings.title | escape }}
-        {% else %}
-          Bestseller
-        {% endif %}
+        {{ section.settings.title | default: 'Bestseller' | escape }}
       </h2>
 
-      <!-- Description -->
-      {% if section.settings.description != blank or section.settings.show_description and section.settings.collection.description != empty %}
+      {% if section.settings.description != blank %}
         <div class="collection__description {{ section.settings.description_style }} rte">
-          {% if section.settings.show_description %}
-            {{ section.settings.collection.description }}
-          {% else %}
-            {{ section.settings.description }}
-          {% endif %}
+          {{ section.settings.description }}
+        </div>
+      {% elsif section.settings.show_description and section.settings.collection != blank and section.settings.collection.description != empty %}
+        <div class="collection__description {{ section.settings.description_style }} rte">
+          {{ section.settings.collection.description }}
         </div>
       {% endif %}
     </div>
@@ -124,7 +111,7 @@
     <div class="collection-tabs-{{ section.id }}" data-collection-tabs>
 
       <!-- Tab buttons -->
-      <div class="tabs-buttons" role="tablist">
+      <div class="tabs-buttons page-width" role="tablist" aria-label="Product collections">
         {% for block in section.blocks %}
           {% assign tab_collection = block.settings.tab_collection %}
 
@@ -138,12 +125,12 @@
             data-tab-button
             {{ block.shopify_attributes }}
           >
-            {{ block.settings.tab_name | default: tab_collection.title | escape }}
+            {{ block.settings.tab_name | default: tab_collection.title | default: 'Collection' | escape }}
           </button>
         {% endfor %}
       </div>
 
-      <!-- Products for each tab -->
+      <!-- Each tab displays its selected collection -->
       {% for block in section.blocks %}
         {% assign tab_collection = block.settings.tab_collection %}
 
@@ -154,49 +141,113 @@
           aria-labelledby="tab-{{ section.id }}-{{ block.id }}"
           data-tab-panel
           {% unless forloop.first %}hidden{% endunless %}
+          {{ block.shopify_attributes }}
         >
+
           {% if tab_collection != blank %}
-            <ul
-              class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
-              role="list"
+
+            {% assign tab_product_count = tab_collection.products_count %}
+
+            <slider-component
+              class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if section.settings.swipe_on_mobile == false and section.settings.enable_desktop_slider == false %} page-width{% endif %}"
             >
-              {% for product in tab_collection.products limit: section.settings.products_to_show %}
-                <li class="grid__item">
-                  {% render 'card-product',
-                    card_product: product,
-                    media_aspect_ratio: section.settings.image_ratio,
-                    image_shape: section.settings.image_shape,
-                    lazy_load: true,
-                    show_secondary_image: section.settings.show_secondary_image,
-                    show_vendor: section.settings.show_vendor,
-                    show_rating: section.settings.show_rating,
-                    section_id: section.id,
-                    quick_add: section.settings.quick_add,
-                    product_view_context: 'collection'
-                  %}
-                </li>
-              {% endfor %}
-            </ul>
+              <ul
+                id="Slider-{{ section.id }}-{{ block.id }}"
+                class="grid product-grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down{% if section.settings.enable_desktop_slider %} slider slider--desktop{% endif %}{% if section.settings.swipe_on_mobile %} slider slider--tablet{% endif %}"
+                role="list"
+              >
+                {% for product in tab_collection.products limit: section.settings.products_to_show %}
+                  <li
+                    id="Slide-{{ section.id }}-{{ block.id }}-{{ forloop.index }}"
+                    class="grid__item{% if section.settings.enable_desktop_slider %} slider__slide{% endif %}{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}"
+                  >
+                    {% render 'card-product',
+                      card_product: product,
+                      media_aspect_ratio: section.settings.image_ratio,
+                      image_shape: section.settings.image_shape,
+                      lazy_load: true,
+                      show_secondary_image: section.settings.show_secondary_image,
+                      show_vendor: section.settings.show_vendor,
+                      show_rating: section.settings.show_rating,
+                      section_id: section.id,
+                      quick_add: section.settings.quick_add
+                    %}
+                  </li>
+                {% else %}
+                  <li class="grid__item">
+                    <p>This collection has no products to display.</p>
+                  </li>
+                {% endfor %}
+              </ul>
+
+              {% if section.settings.enable_desktop_slider or section.settings.swipe_on_mobile %}
+                <div class="slider-buttons no-js-hidden">
+                  <button
+                    type="button"
+                    class="slider-button slider-button--prev"
+                    name="previous"
+                    aria-label="{{ 'general.slider.previous_slide' | t }}"
+                    aria-controls="Slider-{{ section.id }}-{{ block.id }}"
+                  >
+                    <span class="svg-wrapper">
+                      {{ 'icon-caret.svg' | inline_asset_content }}
+                    </span>
+                  </button>
+
+                  <div class="slider-counter caption">
+                    <span class="slider-counter--current">1</span>
+                    <span aria-hidden="true"> / </span>
+                    <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+                    <span class="slider-counter--total">
+                      {{ tab_product_count | at_most: section.settings.products_to_show }}
+                    </span>
+                  </div>
+
+                  <button
+                    type="button"
+                    class="slider-button slider-button--next"
+                    name="next"
+                    aria-label="{{ 'general.slider.next_slide' | t }}"
+                    aria-controls="Slider-{{ section.id }}-{{ block.id }}"
+                  >
+                    <span class="svg-wrapper">
+                      {{ 'icon-caret.svg' | inline_asset_content }}
+                    </span>
+                  </button>
+                </div>
+              {% endif %}
+            </slider-component>
+
+            <!-- View all links to this tab's collection -->
+            {% if section.settings.show_view_all and tab_product_count > section.settings.products_to_show %}
+              <div class="center collection__view-all">
+                <a
+                  href="{{ tab_collection.url }}"
+                  class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
+                  aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: tab_collection.title | escape }}"
+                >
+                  {{ 'sections.featured_collection.view_all' | t }}
+                </a>
+              </div>
+            {% endif %}
+
+          {% else %}
+            <div class="page-width">
+              <p>Select a collection for this tab in the theme editor.</p>
+            </div>
           {% endif %}
+
         </div>
       {% endfor %}
 
+      {% if section.blocks.size == 0 %}
+        <div class="page-width">
+          <p>Add a Collection tab block and select a collection.</p>
+        </div>
+      {% endif %}
+
     </div>
 
-    <!-- View all button -->
-    {% if section.settings.show_view_all and more_in_collection and section.settings.collection != blank %}
-      <div class="center collection__view-all">
-        <a
-          href="{{ section.settings.collection.url }}"
-          class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
-          aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}"
-        >
-          {{ 'sections.featured_collection.view_all' | t }}
-        </a>
-      </div>
-    {% endif %}
-
-    <!-- Arch image support -->
     {% if section.settings.image_shape == 'arch' %}
       {{ 'mask-arch.svg' | inline_asset_content }}
     {% endif %}
@@ -206,36 +257,47 @@
 
 <script>
   (function () {
-    const sectionId = 'collection-tabs-{{ section.id }}';
-    const sectionElement = document.querySelector('.' + sectionId);
+    function initializeCollectionTabs(container) {
+      if (!container || container.dataset.tabsInitialized === 'true') return;
 
-    if (!sectionElement || sectionElement.dataset.tabsInitialized === 'true') return;
+      container.dataset.tabsInitialized = 'true';
 
-    sectionElement.dataset.tabsInitialized = 'true';
+      const buttons = container.querySelectorAll('[data-tab-button]');
+      const panels = container.querySelectorAll('[data-tab-panel]');
 
-    const buttons = sectionElement.querySelectorAll('[data-tab-button]');
-    const panels = sectionElement.querySelectorAll('[data-tab-panel]');
+      buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+          buttons.forEach(function (tab) {
+            tab.classList.remove('active');
+            tab.setAttribute('aria-selected', 'false');
+          });
 
-    buttons.forEach(function (button, index) {
-      button.addEventListener('click', function () {
-        buttons.forEach(function (tab) {
-          tab.classList.remove('active');
-          tab.setAttribute('aria-selected', 'false');
+          panels.forEach(function (panel) {
+            panel.hidden = true;
+          });
+
+          button.classList.add('active');
+          button.setAttribute('aria-selected', 'true');
+
+          const panelId = button.getAttribute('aria-controls');
+          const activePanel = container.querySelector('#' + panelId);
+
+          if (activePanel) {
+            activePanel.hidden = false;
+          }
         });
+      });
+    }
 
-        panels.forEach(function (panel) {
-          panel.hidden = true;
-        });
+    document.querySelectorAll('[data-collection-tabs]').forEach(function (container) {
+      initializeCollectionTabs(container);
+    });
 
-        button.classList.add('active');
-        button.setAttribute('aria-selected', 'true');
+    document.addEventListener('shopify:section:load', function (event) {
+      const containers = event.target.querySelectorAll('[data-collection-tabs]');
 
-        const panelId = button.getAttribute('aria-controls');
-        const activePanel = sectionElement.querySelector('#' + panelId);
-
-        if (activePanel) {
-          activePanel.hidden = false;
-        }
+      containers.forEach(function (container) {
+        initializeCollectionTabs(container);
       });
     });
   })();
@@ -243,7 +305,7 @@
 
 {% schema %}
 {
-  "name": "t:sections.featured-collection.name",
+  "name": "Featured collection tabs",
   "tag": "section",
   "class": "section",
   "disabled_on": {
@@ -271,7 +333,7 @@
     {
       "type": "inline_richtext",
       "id": "title",
-      "default": "t:sections.featured-collection.settings.title.default",
+      "default": "Bestseller",
       "label": "t:sections.featured-collection.settings.title.label"
     },
     {
@@ -568,7 +630,15 @@
   "max_blocks": 12,
   "presets": [
     {
-      "name": "t:sections.featured-collection.presets.name"
+      "name": "Featured collection tabs",
+      "blocks": [
+        {
+          "type": "collection_tab"
+        },
+        {
+          "type": "collection_tab"
+        }
+      ]
     }
   ]
 }
