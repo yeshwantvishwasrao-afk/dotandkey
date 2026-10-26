@@ -87,6 +87,20 @@
     "featured_collection_4UYW6G": {
       "type": "featured-collection",
       "blocks": {
+        "collection_tab_kTafbR": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_name": "HYDROGEN",
+            "tab_collection": ""
+          }
+        },
+        "collection_tab_Nh7NfM": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_name": "OXYGEN",
+            "tab_collection": ""
+          }
+        },
         "collection_tab_MgHVjX": {
           "type": "collection_tab",
           "settings": {
@@ -96,6 +110,8 @@
         }
       },
       "block_order": [
+        "collection_tab_kTafbR",
+        "collection_tab_Nh7NfM",
         "collection_tab_MgHVjX"
       ],
       "name": "t:sections.featured-collection.presets.name",
