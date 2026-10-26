@@ -296,42 +296,34 @@ left: 10px;
 
 
 
-/* View All button */
-.dev-view-all{
 
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-
-
-
-
-  min-width: 312px;
-  min-height: 64px;
-  padding: 16px 30px;
-  background-color: #ffffffff;
-  color: #e01395bc;
-  border: none;
-  border-radius: 12px;
-  font-size: 24px;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
+/* Normal button */
+. view-all  {
+  background-color: #ffffff;
+  color: #ff3880;
+  border: 2px solid #ff3880;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Pink hover effect */
-.center dev-view-all a:hover {
-  background-color: #ff0055ff;
+/* Mouse hover */
+.dev-view-all a:hover {
+  background-color: #ff3880;
   color: #ffffff;
+  border-color: #ff3880;
 }
 
-/* Mobile */
-@media screen and (max-width: 767px) {
-  .dev-view-all a {
-    min-width: 0;
-    width: 100%;
-    max-width: 312px;
-    min-height: 56px;
-    font-size: 20px;
+/* Keyboard focus */
+.dev-view-all a:focus-visible {
+  background-color: #ff3880;
+  color: #ffffff;
+  border-color: #ff3880;
+}
+
+/* Touch devices */
+@media (hover: none) {
+  .dev-view-all a:active {
+    background-color: #ff3880;
+    color: #ffffff;
+    border-color: #ff3880;
   }
 }
