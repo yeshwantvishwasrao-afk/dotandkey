@@ -91,21 +91,21 @@
           "type": "collection_tab",
           "settings": {
             "tab_name": "HYDROGEN",
-            "tab_collection": ""
+            "tab_collection": "automated-collection"
           }
         },
         "collection_tab_Nh7NfM": {
           "type": "collection_tab",
           "settings": {
             "tab_name": "OXYGEN",
-            "tab_collection": ""
+            "tab_collection": "hydrogen"
           }
         },
         "collection_tab_MgHVjX": {
           "type": "collection_tab",
           "settings": {
             "tab_name": "LIQUID",
-            "tab_collection": ""
+            "tab_collection": "all-product"
           }
         }
       },
