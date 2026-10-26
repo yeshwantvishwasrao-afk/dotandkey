@@ -18,19 +18,9 @@
 }
 
 
-
-.h2.title.inline-richtext.h1 {
-
-  font-size: 36px;
-    font-family: Poppins-SemiBold;
-    font-weight: 700;
-    color: #111827;
-    line-height: 1.2;
-
-
+.collection__title.title-wrapper{
+  text-align: center;
 }
-
-
 
 
 
