@@ -298,8 +298,15 @@ left: 10px;
 
 /* View All button */
 .dev-view-all{
-  display: inline-flex;
-  justify-content: center;
+
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+
+
+
+
+ 
   align-items: center;
   min-width: 312px;
   min-height: 64px;
