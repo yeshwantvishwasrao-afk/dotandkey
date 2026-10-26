@@ -76,7 +76,7 @@
 .price-discount-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 100px;
   flex-wrap: wrap;
 }
 
