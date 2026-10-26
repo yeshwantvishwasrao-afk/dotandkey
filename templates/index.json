@@ -91,7 +91,7 @@
           "type": "collection_tab",
           "settings": {
             "tab_name": "HYDROGEN",
-            "tab_collection": "automated-collection",
+            "tab_collection": "hydrogen",
             "products_to_show": 4,
             "columns_desktop": 4,
             "columns_mobile": "2",
@@ -111,7 +111,7 @@
           "type": "collection_tab",
           "settings": {
             "tab_name": "OXYGEN",
-            "tab_collection": "hydrogen",
+            "tab_collection": "automated-collection",
             "products_to_show": 4,
             "columns_desktop": 4,
             "columns_mobile": "2",
@@ -131,7 +131,7 @@
           "type": "collection_tab",
           "settings": {
             "tab_name": "LIQUID",
-            "tab_collection": "all-product",
+            "tab_collection": "automated-collection",
             "products_to_show": 4,
             "columns_desktop": 4,
             "columns_mobile": "2",
