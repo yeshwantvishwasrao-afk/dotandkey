@@ -311,8 +311,8 @@ left: 10px;
   min-width: 312px;
   min-height: 64px;
   padding: 16px 30px;
-  background-color: #ff3880;
-  color: #ffffff;
+  background-color: #ffffffff;
+  color: #e01395bc;
   border: none;
   border-radius: 12px;
   font-size: 24px;
@@ -323,7 +323,7 @@ left: 10px;
 
 /* Pink hover effect */
 .center dev-view-all a:hover {
-  background-color: #e91e63;
+  background-color: #ff0055ff;
   color: #ffffff;
 }
 
