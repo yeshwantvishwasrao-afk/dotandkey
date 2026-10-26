@@ -77,6 +77,35 @@
         <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           {{ section.settings.title }}
         </h2>
+
+        <div class="tabbed-collection__tabs-wrapper">
+        <div class="tabbed-collection__tabs" role="tablist"><button class="tabbed-collection__tab-button active" role="tab" aria-selected="true" aria-controls="tab-content-collection_tab_KpP6Ba" id="tab-button-collection_tab_KpP6Ba" data-tab-id="collection_tab_KpP6Ba" data-view-all-url="/collections/best-sellers" data-view-all-text="" fdprocessedid="6nncyp">
+                Sunscreen
+              </button><button class="tabbed-collection__tab-button " role="tab" aria-selected="false" aria-controls="tab-content-collection_tab_Cnw6jV" id="tab-button-collection_tab_Cnw6jV" data-tab-id="collection_tab_Cnw6jV" data-view-all-url="/collections/best-sellers" data-view-all-text="" fdprocessedid="5i1sp9">
+                Moisturizer
+              </button><button class="tabbed-collection__tab-button " role="tab" aria-selected="false" aria-controls="tab-content-collection_tab_nRDp3n" id="tab-button-collection_tab_nRDp3n" data-tab-id="collection_tab_nRDp3n" data-view-all-url="/collections/best-sellers" data-view-all-text="" fdprocessedid="p1k5pg">
+                Serum
+              </button><button class="tabbed-collection__tab-button " role="tab" aria-selected="false" aria-controls="tab-content-collection_tab_WJyTCp" id="tab-button-collection_tab_WJyTCp" data-tab-id="collection_tab_WJyTCp" data-view-all-url="/collections/best-sellers" data-view-all-text="" fdprocessedid="mj8dnl">
+                Facewash
+              </button><button class="tabbed-collection__tab-button " role="tab" aria-selected="false" aria-controls="tab-content-collection_tab_g9VCrK" id="tab-button-collection_tab_g9VCrK" data-tab-id="collection_tab_g9VCrK" data-view-all-url="/collections/best-sellers" data-view-all-text="" fdprocessedid="2unnnp">
+                Lip Balm
+              </button></div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       {%- endif -%}
       {%- if section.settings.description != blank
         or section.settings.show_description
@@ -91,6 +120,7 @@
         </div>
       {%- endif -%}
     </div>
+
 
     <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <ul
