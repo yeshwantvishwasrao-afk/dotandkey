@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('[data-collection-tabs], .dev-tabs').forEach(function (section) {
+  document.querySelectorAll('[id^="collection-"]').forEach(function (section) {
     const buttons = section.querySelectorAll('[data-tab-button]');
     const panels = section.querySelectorAll('[data-tab-panel]');
     const tabList = section.querySelector('.dev-tabs__buttons');
