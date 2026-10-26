@@ -240,7 +240,7 @@ left: 10px;
 .dev-tabs__button:hover,
 .dev-tabs__button.active {
   border-color: #ff3e80;
-  color: #ff3e80;
+  color: #fffcfdff;
 }
 
 /* Hide inactive collection panels */
