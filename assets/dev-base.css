@@ -176,7 +176,8 @@
 .dev-tabs__button {
   flex: 0 0 auto;
   padding: 12px 24px;
-  border: 1px solid #f4f1f2ff;
+  box-sizing: border-box;
+    border: 0 solid #e5e7eb;
   border-radius: 30px;
   background: #bdbaba98;
   color: #333;
