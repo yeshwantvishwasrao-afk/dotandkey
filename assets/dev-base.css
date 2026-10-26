@@ -217,12 +217,18 @@
 .dev-tabs__layout > .dev-tabs__arrow {
     display: block;
     vertical-align: middle;
+       display: block;
+    max-width: 100%;
+    height: auto;
+
+
+    /*
   transform: translateY(-50%);
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 40px;
+  flex: 0 0 40px;*/
   width: 40px;
   height: 40px;
   padding: 0;
