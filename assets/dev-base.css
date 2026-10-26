@@ -24,14 +24,6 @@
 
 
 
-
-
-
-
-
-
-
-
 .header__menu-item:hover
 {
     color:#ff40b1;
@@ -127,3 +119,40 @@ left: 10px;
     cursor: pointer;
 }
 
+
+
+@media screen and (max-width: 991px) {
+  .collection-tabs .tabs-buttons {
+    gap: 12px;
+  }
+
+  .collection-tabs .tab-button {
+    font-size: 18px;
+    padding: 10px 22px;
+  }
+
+  .collection-tabs .tab-products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .collection-tabs .tabs-heading {
+    font-size: 30px;
+  }
+
+  .collection-tabs .tabs-buttons {
+    gap: 10px;
+  }
+
+  .collection-tabs .tab-button {
+    font-size: 15px;
+    padding: 10px 16px;
+  }
+
+  .collection-tabs .tab-products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
