@@ -295,9 +295,38 @@ left: 10px;
 }
 
 
-.center dev-view-all {
-display: flex;
-    justify-content: center;
-    margin-top: 15px;
 
+/* View All button */
+. dev-view-all{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 312px;
+  min-height: 64px;
+  padding: 16px 30px;
+  background-color: #ff3880;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Pink hover effect */
+.dev-view-all a:hover {
+  background-color: #e91e63;
+  color: #ffffff;
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .dev-view-all a {
+    min-width: 0;
+    width: 100%;
+    max-width: 312px;
+    min-height: 56px;
+    font-size: 20px;
+  }
 }
