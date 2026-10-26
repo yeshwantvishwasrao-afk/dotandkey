@@ -37,7 +37,7 @@
     }
   }
 {%- endstyle -%}
-
+{% comment %}
 {%- liquid
   assign products_to_display = section.settings.collection.all_products_count
 
@@ -63,6 +63,7 @@
     assign show_desktop_slider = true
   endif
 -%}
+  {% endcomment %}
 
 <div
   class="dev-ys-color-{{ section.settings.color_scheme }} isolate gradient"
