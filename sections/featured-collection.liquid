@@ -147,11 +147,17 @@
                 {% endfor %}
               </ul>
 
-              <div class="dev-product-slider__controls">
-                <button type="button" class="dev-product-slider__arrow " data-product-prev aria-label="Previous products">&#10094;</button>
-                <button type="button" class="dev-product-slider__arrow " data-product-next aria-label="Next products">&#10095;</button>
-              </div>
-            </div>
+     <div class="dev-product-slider__controls">
+  <button type="button" class="dev-product-slider__arrow"
+    data-product-prev aria-label="Previous products">
+    &#10094;
+  </button>
+
+  <button type="button" class="dev-product-slider__arrow"
+    data-product-next aria-label="Next products">
+    &#10095;
+  </button>
+</div>
 
             {% if block.settings.show_view_all %}
               <div class="center collection__view-all">
