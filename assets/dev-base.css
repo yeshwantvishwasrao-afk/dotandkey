@@ -106,6 +106,14 @@
 .price-discount-row .pdp-discount {
   white-space: nowrap;
 }
+price-discount-row{
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: auto;
+}
+  
+
 
 
 /* ========================================
