@@ -360,14 +360,22 @@
   display: none;
 }
 
-/* Arrows */
-.dev-tabs__arrow {
+/* Arrows: independent row */
+.dev-tabs__arrows {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px auto;
+  pointer-events: none;
+}
+
+.dev-tabs__arrows .dev-tabs__arrow {
+  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
-  padding: 0;
   border: 1px solid #ff3880;
   border-radius: 50%;
   background: #fff;
