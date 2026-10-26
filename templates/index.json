@@ -86,6 +86,18 @@
     },
     "featured_collection_4UYW6G": {
       "type": "featured-collection",
+      "blocks": {
+        "collection_tab_MgHVjX": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_name": "LIQUID",
+            "tab_collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_MgHVjX"
+      ],
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "collection": "all-product",
