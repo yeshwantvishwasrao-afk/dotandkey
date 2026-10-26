@@ -97,15 +97,71 @@
 </div>
 
 
+      <div>
       {% if section.blocks.size == 0 %}
         <div class="page-width">
           <p>Add a Collection tab block and select a collection.</p>
         </div>
       {% endif %}
 
+      <!-- COLLECTION PRODUCT PANELS -->
+      <div class="dev-tabs__content page-width">
+        {% for block in section.blocks %}
+          {% assign tab_collection = block.settings.tab_collection %}
+
+          <div
+            class="dev-tabs__panel"
+            id="panel-{{ section.id }}-{{ block.id }}"
+            role="tabpanel"
+            aria-labelledby="tab-{{ section.id }}-{{ block.id }}"
+            data-tab-panel
+            {% unless forloop.first %}hidden{% endunless %}
+            {{ block.shopify_attributes }}
+          >
+            {% if tab_collection != blank and tab_collection.products_count > 0 %}
+              <ul
+                class="grid product-grid grid--{{ block.settings.columns_desktop }}-col-desktop grid--{{ block.settings.columns_mobile }}-col-tablet-down"
+                role="list"
+              >
+                {% for product in tab_collection.products limit: block.settings.products_to_show %}
+                  <li class="grid__item">
+                    {% render 'card-product',
+                      card_product: product,
+                      media_aspect_ratio: block.settings.image_ratio,
+                      image_shape: block.settings.image_shape,
+                      show_secondary_image: block.settings.show_secondary_image,
+                      show_vendor: block.settings.show_vendor,
+                      show_rating: block.settings.show_rating,
+                      lazy_load: true,
+                      skip_styles: false,
+                      section_id: section.id,
+                      quick_add: block.settings.quick_add
+                    %}
+                  </li>
+                {% endfor %}
+              </ul>
+
+              {% if block.settings.show_view_all %}
+                <div class="center collection__view-all">
+                  <a
+                    href="{{ tab_collection.url }}"
+                    class="button button--{{ block.settings.view_all_style }}"
+                  >
+                    View all
+                  </a>
+                </div>
+              {% endif %}
+            {% else %}
+              <p>This collection is empty or has not been selected.</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
     </div>
   </div>
 </div>
+
 
 {% schema %}
 {
