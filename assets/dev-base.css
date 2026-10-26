@@ -137,8 +137,8 @@
 
 /* Pink circular arrows */
 .dev-tabs__arrow {
-  display: flex;
-  align-items: center;
+  display: block;
+    vertical-align: middle;
   justify-content: center;
   flex-shrink: 0;
   width: 36px;
@@ -306,46 +306,6 @@
 
 
 
-
-/* Collection tab product grid */
-.dev-tabs__content {
-  margin-top: 24px;
-}
-
-.dev-tabs__panel .product-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 24px 16px;
-  margin: 0;
-  padding: 0;
-}
-
-.dev-tabs__panel .grid__item {
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-}
-
-.dev-tabs__panel .card-wrapper {
-  width: 100%;
-}
-
-.dev-tabs__panel .card__media img {
-  object-fit: contain;
-}
-
-@media screen and (max-width: 989px) {
-  .dev-tabs__panel .product-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media screen and (max-width: 749px) {
-  .dev-tabs__panel .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px 10px;
-  }
-}
 
 
 
