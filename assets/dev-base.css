@@ -293,3 +293,11 @@ left: 10px;
     scroll-snap-align: start;
   }
 }
+
+
+.center dev-view-all {
+display: flex;
+    justify-content: center;
+    margin-top: 15px;
+
+}
