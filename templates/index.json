@@ -92,8 +92,8 @@
           "settings": {
             "tab_name": "HYDROGEN",
             "tab_collection": "all-product",
-            "products_to_show": 25,
-            "columns_desktop": 4,
+            "products_to_show": 24,
+            "columns_desktop": 3,
             "columns_mobile": "2",
             "show_view_all": true,
             "view_all_style": "solid",
@@ -138,7 +138,7 @@
             "show_secondary_image": true,
             "show_vendor": true,
             "show_rating": false,
-            "quick_add": "none"
+            "quick_add": "standard"
           }
         }
       },
