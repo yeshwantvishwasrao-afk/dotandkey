@@ -121,27 +121,56 @@
         >
           {% if tab_collection != blank and tab_collection.products_count > 0 %}
 
-            <ul
-              class="grid product-grid grid--{{ block.settings.columns_desktop }}-col-desktop grid--{{ block.settings.columns_mobile }}-col-tablet-down"
-              role="list"
-            >
-              {% for product in tab_collection.products limit: block.settings.products_to_show %}
-                <li class="grid__item">
-                  {% render 'card-product',
-                    card_product: product,
-                    media_aspect_ratio: block.settings.image_ratio,
-                    image_shape: block.settings.image_shape,
-                    show_secondary_image: block.settings.show_secondary_image,
-                    show_vendor: block.settings.show_vendor,
-                    show_rating: block.settings.show_rating,
-                    lazy_load: true,
-                    skip_styles: false,
-                    section_id: section.id,
-                    quick_add: block.settings.quick_add
-                  %}
-                </li>
-              {% endfor %}
-            </ul>
+            <slider-component class="slider-mobile-gutter">
+              <ul
+                id="Slider-{{ section.id }}-{{ block.id }}"
+                class="grid product-grid grid--{{ block.settings.columns_desktop }}-col-desktop grid--{{ block.settings.columns_mobile }}-col-tablet-down slider slider--desktop slider--tablet slider--mobile"
+                role="list"
+              >
+                {% for product in tab_collection.products limit: block.settings.products_to_show %}
+                  <li class="grid__item slider__slide">
+                    {% render 'card-product',
+                      card_product: product,
+                      media_aspect_ratio: block.settings.image_ratio,
+                      image_shape: block.settings.image_shape,
+                      show_secondary_image: block.settings.show_secondary_image,
+                      show_vendor: block.settings.show_vendor,
+                      show_rating: block.settings.show_rating,
+                      lazy_load: true,
+                      skip_styles: false,
+                      section_id: section.id,
+                      quick_add: block.settings.quick_add
+                    %}
+                  </li>
+                {% endfor %}
+              </ul>
+
+              <div class="slider-buttons">
+                <button
+                  type="button"
+                  class="slider-button slider-button--prev"
+                  name="previous"
+                  aria-label="Previous products"
+                  aria-controls="Slider-{{ section.id }}-{{ block.id }}"
+                >
+                  <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+                </button>
+                <div class="slider-counter caption">
+                  <span class="slider-counter--current">1</span>
+                  <span aria-hidden="true"> / </span>
+                  <span class="slider-counter--total">{{ block.settings.products_to_show | at_most: tab_collection.products_count }}</span>
+                </div>
+                <button
+                  type="button"
+                  class="slider-button slider-button--next"
+                  name="next"
+                  aria-label="Next products"
+                  aria-controls="Slider-{{ section.id }}-{{ block.id }}"
+                >
+                  <span class="svg-wrapper">{{ 'icon-caret.svg' | inline_asset_content }}</span>
+                </button>
+              </div>
+            </slider-component>
 
             {% if block.settings.show_view_all %}
               <div class="center collection__view-all">
