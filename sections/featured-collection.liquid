@@ -56,11 +56,9 @@
     </div>
 
    
-
-<!-- Collection navigation wrapper -->
-<div class="dev-tabs__layout page-width">
-
-  <!-- Independent previous arrow -->
+    
+<!-- Separate arrow navigation -->
+<div class="dev-tabs__arrows page-width">
   <button
     type="button"
     class="dev-tabs__arrow dev-tabs__prev"
@@ -69,39 +67,6 @@
   >
     &#10094;
   </button>
-
-  <!-- Independent tab list -->
-  <div class="dev-tabs__buttons" role="tablist">
-    {% for block in section.blocks %}
-      {% assign tab_collection = block.settings.tab_collection %}
-
-      <button
-        type="button"
-        class="dev-tabs__button{% if forloop.first %} active{% endif %}"
-        id="tab-{{ section.id }}-{{ block.id }}"
-        role="tab"
-        aria-controls="panel-{{ section.id }}-{{ block.id }}"
-        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
-        data-tab-button
-      >
-        {{ block.settings.tab_name | default: tab_collection.title | default: 'Collection' | escape }}
-      </button>
-    {% endfor %}
-  </div>
-
-  <!-- Independent next arrow -->
-  <button
-    type="button"
-    class="dev-tabs__arrow dev-tabs__next"
-    aria-label="Next collections"
-    data-tabs-next
-  >
-    &#10095;
-  </button>
-
-</div>
-    
-
 
   <button
     type="button"
