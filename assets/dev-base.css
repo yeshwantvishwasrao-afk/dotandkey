@@ -297,7 +297,7 @@ left: 10px;
 
 
 /* View All button */
-.center dev-view-all{
+.dev-view-all{
   display: inline-flex;
   justify-content: center;
   align-items: center;
