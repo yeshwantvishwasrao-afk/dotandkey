@@ -297,7 +297,7 @@ left: 10px;
 
 
 /* View All button */
-. dev-view-all{
+. center dev-view-all{
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -315,7 +315,7 @@ left: 10px;
 }
 
 /* Pink hover effect */
-.dev-view-all a:hover {
+.center dev-view-all a:hover {
   background-color: #e91e63;
   color: #ffffff;
 }
