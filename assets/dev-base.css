@@ -231,7 +231,7 @@ left: 10px;
   border: 1px solid transparent;
   border-radius: 16px;
    background-color: #ded7d9ff;
-  color: #26354a;
+  color: #040404ff;
   font: inherit;
   cursor: pointer;
   transition: color 0.2s, border-color 0.2s;
@@ -239,6 +239,7 @@ left: 10px;
 
 .dev-tabs__button:hover,
 .dev-tabs__button.active {
+  font-
   border-color: #ff3e80;
   color: #fffcfdff;
 }
