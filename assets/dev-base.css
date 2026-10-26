@@ -371,8 +371,8 @@
 
 .dev-tabs__arrows .dev-tabs__arrow {
   pointer-events: auto;
-  display: flex;
-  align-items: center;
+  display: block;
+    vertical-align: middle;
   justify-content: center;
   width: 40px;
   height: 40px;
@@ -391,14 +391,4 @@
     gap: 8px;
   }
 
-  .dev-tabs__buttons {
-    justify-content: flex-start;
-    gap: 8px;
-  }
-
-  .dev-tabs__arrow {
-    width: 32px;
-    height: 32px;
-    font-size: 18px;
-  }
-}
+  
