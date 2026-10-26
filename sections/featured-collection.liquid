@@ -78,19 +78,71 @@
           {{ section.settings.title }}
         </h2>
 
-        <div class="tabbed-collection__tabs-wrapper">
-        <div class="tabbed-collection__tabs" role="tablist"><button class="tabbed-collection__tab-button active" role="tab" aria-selected="true" aria-controls="tab-content-collection_tab_KpP6Ba" id="tab-button-collection_tab_KpP6Ba" data-tab-id="collection_tab_KpP6Ba" data-view-all-url="/collections/best-sellers" data-view-all-text="" fdprocessedid="6nncyp">
-                Sunscreen
-              </button><button class="tabbed-collection__tab-button " role="tab" aria-selected="false" aria-controls="tab-content-collection_tab_Cnw6jV" id="tab-button-collection_tab_Cnw6jV" data-tab-id="collection_tab_Cnw6jV" data-view-all-url="/collections/best-sellers" data-view-all-text="" fdprocessedid="5i1sp9">
-                Moisturizer
-              </button><button class="tabbed-collection__tab-button " role="tab" aria-selected="false" aria-controls="tab-content-collection_tab_nRDp3n" id="tab-button-collection_tab_nRDp3n" data-tab-id="collection_tab_nRDp3n" data-view-all-url="/collections/best-sellers" data-view-all-text="" fdprocessedid="p1k5pg">
-                Serum
-              </button><button class="tabbed-collection__tab-button " role="tab" aria-selected="false" aria-controls="tab-content-collection_tab_WJyTCp" id="tab-button-collection_tab_WJyTCp" data-tab-id="collection_tab_WJyTCp" data-view-all-url="/collections/best-sellers" data-view-all-text="" fdprocessedid="mj8dnl">
-                Facewash
-              </button><button class="tabbed-collection__tab-button " role="tab" aria-selected="false" aria-controls="tab-content-collection_tab_g9VCrK" id="tab-button-collection_tab_g9VCrK" data-tab-id="collection_tab_g9VCrK" data-view-all-url="/collections/best-sellers" data-view-all-text="" fdprocessedid="2unnnp">
-                Lip Balm
-              </button></div>
-      </div>
+       <div class="collection-tabs-{{ section.id }}" data-collection-tabs>
+  <h2 class="tabs-heading">{{ section.settings.heading | escape }}</h2>
+
+  <div class="tabs-buttons" role="tablist">
+    {% for block in section.blocks %}
+      {% assign tab_collection = block.settings.collection %}
+
+      <button
+        type="button"
+        class="tab-button{% if forloop.first %} active{% endif %}"
+        id="tab-{{ section.id }}-{{ block.id }}"
+        role="tab"
+        aria-controls="panel-{{ section.id }}-{{ block.id }}"
+        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+        data-tab-button
+        {{ block.shopify_attributes }}
+      >
+        {{ block.settings.tab_name | default: tab_collection.title | escape }}
+      </button>
+    {% endfor %}
+  </div>
+
+  {% for block in section.blocks %}
+    {% assign tab_collection = block.settings.collection %}
+
+    <div
+      id="panel-{{ section.id }}-{{ block.id }}"
+      role="tabpanel"
+      aria-labelledby="tab-{{ section.id }}-{{ block.id }}"
+      data-tab-panel
+      {% unless forloop.first %}hidden{% endunless %}
+    >
+      {% if tab_collection != blank %}
+        <div class="tab-products">
+          {% for product in tab_collection.products limit: section.settings.products_to_show %}
+            <div class="tab-product">
+              <a href="{{ product.url }}">
+                {% if product.featured_image %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 500 }}"
+                    alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                    width="{{ product.featured_image.width }}"
+                    height="{{ product.featured_image.height }}"
+                    loading="lazy"
+                  >
+                {% endif %}
+
+                <h3>{{ product.title | escape }}</h3>
+              </a>
+
+              <div class="tab-price">
+                {% if product.compare_at_price > product.price %}
+                  <s>{{ product.compare_at_price | money }}</s>
+                {% endif %}
+                {{ product.price | money }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>Select a collection for this tab in the theme editor.</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
 
 
 
@@ -245,6 +297,7 @@
   </div>
 </div>
 
+
 {% schema %}
 {
   "name": "t:sections.featured-collection.name",
@@ -267,11 +320,11 @@
       "step": 1,
       "default": 4,
       "label": "t:sections.featured-collection.settings.products_to_show.label"
-    },     
+    },
     {
       "type": "header",
       "content": "t:sections.featured-collection.settings.header_text.content"
-    },   
+    },
     {
       "type": "inline_richtext",
       "id": "title",
@@ -315,7 +368,7 @@
       "type": "checkbox",
       "id": "show_description",
       "label": "t:sections.featured-collection.settings.show_description.label",
-      "default": false   
+      "default": false
     },
     {
       "type": "select",
@@ -340,7 +393,7 @@
     {
       "type": "header",
       "content": "t:sections.featured-collection.settings.header_collection.content"
-    },    
+    },
     {
       "type": "range",
       "id": "columns_desktop",
@@ -350,7 +403,7 @@
       "default": 4,
       "label": "t:sections.featured-collection.settings.columns_desktop.label"
     },
-        {
+    {
       "type": "checkbox",
       "id": "enable_desktop_slider",
       "label": "t:sections.featured-collection.settings.enable_desktop_slider.label",
@@ -388,7 +441,7 @@
         }
       ],
       "default": "solid"
-    }, 
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
@@ -518,13 +571,13 @@
           "label": "t:sections.featured-collection.settings.columns_mobile.options__2.label"
         }
       ]
-    },    
+    },
     {
       "type": "checkbox",
       "id": "swipe_on_mobile",
       "default": false,
       "label": "t:sections.featured-collection.settings.swipe_on_mobile.label"
-    },          
+    },
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
@@ -550,6 +603,26 @@
       "default": 36
     }
   ],
+  "blocks": [
+    {
+      "type": "collection_tab",
+      "name": "Collection tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_name",
+          "label": "Tab name",
+          "info": "Leave blank to use the collection title."
+        },
+        {
+          "type": "collection",
+          "id": "tab_collection",
+          "label": "Choose collection"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
   "presets": [
     {
       "name": "t:sections.featured-collection.presets.name"
