@@ -155,11 +155,28 @@
   color: #fff;
 }
 
-/* Horizontal tabs wrapper */
+
+/* Collection tabs section */
+.dev-tabs {
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+/* Navigation row */
+.dev-tabs__navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+}
+
+/* Horizontal tab list */
 .dev-tabs__buttons {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 12px;
   flex: 1;
   min-width: 0;
@@ -172,60 +189,81 @@
   display: none;
 }
 
-/* Normal pink-outline tab */
+/* Individual tabs */
 .dev-tabs__button {
- margin-bottom: 2.5rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-
-
-
-
-
-
-  /*flex: 0 0 auto;
-  padding: 12px 24px;
-  box-sizing: border-box;
-    border: 0 solid #e5e7eb;
-  border-radius: 30px;
-  
+  flex: 0 0 auto;
+  padding: 13px 30px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  background: #f3f3f3;
   color: #333;
-  font-size: 14px;
-  font-weight: 500;
-  white-space: nowrap;
+  font-size: 18px;
+  line-height: 1.3;
   cursor: pointer;
-  transition: all 0.2s ease;*/
+  transition: all 0.2s ease;
 }
 
-/* Hover and selected tab */
-.dev-tabs__button:hover,
-.dev-tabs__button.active,
-.dev-tabs__button[aria-selected="true"] {
-  background: #ff3880;
+/* Selected tab */
+.dev-tabs__button.active {
+  background: #fff;
+  color: #ff3880;
   border-color: #ff3880;
-  color: #fff;
+  box-shadow: 0 2px 8px rgba(255, 56, 128, 0.12);
 }
 
-/* Mobile responsive */
-@media screen and (max-width: 767px) {
-  .dev-tabs__navigation {
-    gap: 8px;
-    margin: 16px auto 22px;
+/* Hover */
+.dev-tabs__button:hover {
+  border-color: #ff3880;
+  color: #ff3880;
+}
+
+/* Navigation arrows */
+.dev-tabs__arrow {
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ff3880;
+  border-radius: 50%;
+  background: #fff;
+  color: #ff3880;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Product panels */
+.dev-tabs__panel[hidden] {
+  display: none !important;
+}
+
+/* Responsive layout */
+@media screen and (max-width: 749px) {
+  .dev-tabs {
+    padding: 16px 0;
   }
 
-  .dev-tabs__arrow {
-    width: 30px;
-    height: 30px;
+  .dev-tabs__navigation {
+    gap: 8px;
   }
 
   .dev-tabs__buttons {
+    justify-content: flex-start;
     gap: 8px;
   }
 
   .dev-tabs__button {
-    padding: 10px 16px;
-    font-size: 12px;
+    padding: 11px 20px;
+    font-size: 15px;
+    border-radius: 11px;
+  }
+
+  .dev-tabs__arrow {
+    flex-basis: 32px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
   }
 }
 
