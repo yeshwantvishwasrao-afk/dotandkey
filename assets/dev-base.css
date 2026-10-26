@@ -131,16 +131,6 @@
 }
 
 
-/* Navigation layout */
-
-.dev-tabs__navigation {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  width: 100%;
-  margin: 20px auto 30px;
-}
 
 
 /* Horizontal tab container */
@@ -208,32 +198,6 @@
 }
 
 
-/* Circular navigation arrows */
-
-.dev-tabs__arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 40px;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: 1px solid #ff3880;
-  border-radius: 50%;
-  background: #fff;
-  color: #ff3880;
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
-  transition:
-    background 0.2s ease,
-    color 0.2s ease;
-}
-
-.dev-tabs__arrow:hover {
-  background: #ff3880;
-  color: #fff;
-}
 
 
 /* ========================================
@@ -369,3 +333,64 @@
 }
 
 
+
+/* Navigation layout */
+.dev-tabs__navigation {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 40px;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin: 20px auto 30px;
+}
+
+/* Tabs stay centered between arrows */
+.dev-tabs__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-width: 0;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  scrollbar-width: none;
+}
+
+.dev-tabs__buttons::-webkit-scrollbar {
+  display: none;
+}
+
+/* Arrows */
+.dev-tabs__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #ff3880;
+  border-radius: 50%;
+  background: #fff;
+  color: #ff3880;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .dev-tabs__navigation {
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+    gap: 8px;
+  }
+
+  .dev-tabs__buttons {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .dev-tabs__arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+}
