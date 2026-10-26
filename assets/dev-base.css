@@ -123,20 +123,42 @@
   font-weight: 600;
   margin: 0 0 28px;
 }
-/* Navigation wrapper */
+
+
+/* Collection navigation */
 .dev-tabs__navigation {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 14px;
   width: 100%;
+  margin: 20px auto 30px;
 }
 
-/* Collection tab buttons */
-.dev-tabs__buttons {
+/* Scroll arrows */
+.dev-tabs__arrow {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #222;
+  border-radius: 50%;
+  background: #fff;
+  color: #222;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dev-tabs__arrow:hover {
+  background: #f2f2f2;
+}
+
+/* Horizontal category menu */
+.dev-tabs__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   gap: 12px;
   flex: 1;
   min-width: 0;
@@ -149,17 +171,51 @@
   display: none;
 }
 
-/* Individual tab */
+/* Category pill */
 .dev-tabs__button {
   flex: 0 0 auto;
+  padding: 12px 24px;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  background: #fff;
+  color: #222;
+  font-size: 14px;
+  font-weight: 500;
   white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Previous and next arrows */
-.dev-tabs__arrow {
-  flex: 0 0 auto;
-  cursor: pointer;
+/* Selected category */
+.dev-tabs__button.active,
+.dev-tabs__button[aria-selected="true"] {
+  background: #222;
+  border-color: #222;
+  color: #fff;
 }
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .dev-tabs__navigation {
+    gap: 8px;
+    margin: 16px auto 22px;
+  }
+
+  .dev-tabs__arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .dev-tabs__buttons {
+    gap: 8px;
+  }
+
+  .dev-tabs__button {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
 
 
 /* ========================================
