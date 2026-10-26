@@ -213,7 +213,6 @@ left: 10px;
   max-width: 100%;
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 40px;
 }
 
 /* Tab buttons */
@@ -224,13 +223,14 @@ left: 10px;
   gap: 20px;
   margin-top: 20px;
   margin-bottom: 35px;
+   background-color: #ded7d9ff;
 }
 
 .dev-tabs__button {
   padding: 14px 28px;
   border: 1px solid transparent;
   border-radius: 16px;
-  background: #fffcfcff;
+  background: #f0f2f6;
   color: #26354a;
   font: inherit;
   cursor: pointer;
@@ -299,7 +299,7 @@ left: 10px;
 
 
 /* Normal button */
-.dev-view-all {
+ {
   background-color: #ffffff;
   color: #ff3880;
   border: 2px solid #ff3880;
