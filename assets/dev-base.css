@@ -125,16 +125,17 @@
 }
 
 
+
 /* Collection navigation */
 .dev-tabs__navigation {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
   margin: 20px auto 30px;
 }
 
-/* Scroll arrows */
+/* Pink circular arrows */
 .dev-tabs__arrow {
   display: flex;
   align-items: center;
@@ -142,19 +143,19 @@
   flex-shrink: 0;
   width: 36px;
   height: 36px;
-  border: 1px solid #222;
+  border: 1px solid #ff3880;
   border-radius: 50%;
   background: #fff;
-  color: #222;
+  color: #ff3880;
   cursor: pointer;
-  transition: background 0.2s ease;
 }
 
 .dev-tabs__arrow:hover {
-  background: #f2f2f2;
+  background: #ff3880;
+  color: #fff;
 }
 
-/* Horizontal category menu */
+/* Horizontal tabs wrapper */
 .dev-tabs__buttons {
   display: flex;
   align-items: center;
@@ -171,14 +172,14 @@
   display: none;
 }
 
-/* Category pill */
+/* Normal pink-outline tab */
 .dev-tabs__button {
   flex: 0 0 auto;
   padding: 12px 24px;
-  border: 1px solid #ddd;
+  border: 1px solid #ff3880;
   border-radius: 30px;
   background: #fff;
-  color: #fb0467ff;
+  color: #333;
   font-size: 14px;
   font-weight: 500;
   white-space: nowrap;
@@ -186,15 +187,16 @@
   transition: all 0.2s ease;
 }
 
-/* Selected category */
+/* Hover and selected tab */
+.dev-tabs__button:hover,
 .dev-tabs__button.active,
 .dev-tabs__button[aria-selected="true"] {
-  background: #222;
-  border-color: #222;
+  background: #ff3880;
+  border-color: #ff3880;
   color: #fff;
 }
 
-/* Mobile */
+/* Mobile responsive */
 @media screen and (max-width: 767px) {
   .dev-tabs__navigation {
     gap: 8px;
@@ -215,7 +217,6 @@
     font-size: 12px;
   }
 }
-
 
 
 /* ========================================
