@@ -17,18 +17,18 @@
 
 }
 
-.title inline-richtext h1 scroll-trigger animate--slide-in{
 
-    font-size: 36px;
+
+.h2.title.inline-richtext.h1.scroll-trigger.animate--slide-in {
+
+  font-size: 36px;
     font-family: Poppins-SemiBold;
     font-weight: 700;
     color: #111827;
     line-height: 1.2;
-}
-  
-}
 
 
+}
 
 
 
