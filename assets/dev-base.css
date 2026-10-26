@@ -130,8 +130,7 @@
 
 
 /* ========================================
-   7. NAVIGATION WRAPPER
-   Arrows are separate from the tab flexbox
+   7. TAB NAVIGATION WRAPPER
 ======================================== */
 
 .dev-tabs__layout {
@@ -142,6 +141,7 @@
   width: 100%;
   min-height: 52px;
   margin: 20px auto 30px;
+  padding: 0 48px;
 }
 
 
@@ -155,7 +155,7 @@
   justify-content: center;
   flex: 0 1 auto;
   min-width: 0;
-  max-width: calc(100% - 120px);
+  max-width: 100%;
   gap: 12px;
   overflow-x: auto;
   flex-wrap: nowrap;
@@ -178,15 +178,9 @@
   line-height: 1.3;
   white-space: nowrap;
   cursor: pointer;
-  transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease, box-shadow 0.2s ease;
 }
-
-
-/* Active tab */
 
 .dev-tabs__button.active {
   background: #fff;
@@ -194,9 +188,6 @@
   border-color: #ff3880;
   box-shadow: 0 2px 8px rgba(255, 56, 128, 0.12);
 }
-
-
-/* Hover and focus */
 
 .dev-tabs__button:hover {
   border-color: #ff3880;
@@ -211,24 +202,18 @@
 
 
 /* ========================================
-   9. INDEPENDENT NAVIGATION ARROWS
+   9. TAB NAVIGATION ARROWS
 ======================================== */
 
 .dev-tabs__layout > .dev-tabs__arrow {
-    display: block;
-    vertical-align: middle;
-       display: block;
-    max-width: 100%;
-    height: auto;
-
-
-    /*
+  position: absolute;
+  top: 50%;
   transform: translateY(-50%);
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 40px;*/
+  flex: 0 0 40px;
   width: 40px;
   height: 40px;
   padding: 0;
@@ -237,11 +222,7 @@
   background: #fff;
   color: #ff3880;
   font-size: 22px;
-  line-height: 1;
   cursor: pointer;
-  transition:
-    background 0.2s ease,
-    color 0.2s ease;
 }
 
 .dev-tabs__layout > .dev-tabs__prev {
@@ -259,7 +240,7 @@
 
 
 /* ========================================
-   10. COLLECTION PRODUCT PANELS
+   10. PRODUCT PANELS
 ======================================== */
 
 .dev-tabs__content {
@@ -272,42 +253,116 @@
 }
 
 
-/* Product grid */
+/* ========================================
+   11. HORIZONTAL PRODUCT CAROUSEL
+======================================== */
 
-.dev-tabs__panel .product-grid {
-  display: grid !important;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-  gap: 24px 16px !important;
+.dev-product-slider {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+.dev-product-slider__track {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch;
+  gap: 12px;
   width: 100%;
   margin: 0 !important;
   padding: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-.dev-tabs__panel .product-grid::before,
-.dev-tabs__panel .product-grid::after {
+.dev-product-slider__track::-webkit-scrollbar {
+  display: none;
+}
+
+.dev-product-slider__track::before,
+.dev-product-slider__track::after {
   display: none !important;
   content: none !important;
 }
 
-.dev-tabs__panel .grid__item {
-  width: 100% !important;
-  max-width: 100% !important;
+.dev-product-slider__track > .dev-product-slider__slide {
+  display: block;
+  flex: 0 0 calc((100% - 48px) / 5) !important;
+  width: auto !important;
+  max-width: none !important;
   min-width: 0;
   padding: 0 !important;
+  scroll-snap-align: start;
 }
 
-.dev-tabs__panel .card-wrapper,
-.dev-tabs__panel .card {
+.dev-product-slider__slide .card-wrapper,
+.dev-product-slider__slide .card {
   width: 100%;
   max-width: 100%;
 }
 
-.dev-tabs__panel .card__media {
+.dev-product-slider__slide .card__media {
   overflow: hidden;
+  border-radius: 12px;
 }
 
 
-/* View all button */
+/* ========================================
+   12. PRODUCT CAROUSEL ARROWS
+======================================== */
+
+.dev-product-slider__controls {
+  position: absolute;
+  top: 140px;
+  left: -22px;
+  right: -22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.dev-product-slider__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  padding: 0;
+  border: 1px solid #ff3880;
+  border-radius: 50%;
+  background: #fff;
+  color: #ff3880;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dev-product-slider__arrow:hover {
+  background: #ff3880;
+  color: #fff;
+}
+
+.dev-product-slider__arrow:focus-visible {
+  outline: 2px solid #ff3880;
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   13. VIEW ALL BUTTON
+======================================== */
 
 .dev-tabs__panel .collection__view-all {
   margin-top: 28px;
@@ -315,26 +370,31 @@
 
 
 /* ========================================
-   11. TABLET RESPONSIVE
+   14. TABLET
 ======================================== */
 
 @media screen and (max-width: 989px) {
-  .dev-tabs__panel .product-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
-
   .dev-tabs__button {
     padding: 12px 22px;
     font-size: 16px;
+  }
+
+  .dev-product-slider__track > .dev-product-slider__slide {
+    flex-basis: calc((100% - 24px) / 3) !important;
+  }
+
+  .dev-product-slider__controls {
+    left: -12px;
+    right: -12px;
   }
 }
 
 
 /* ========================================
-   12. MOBILE RESPONSIVE
+   15. MOBILE
 ======================================== */
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 749px) {
   .dev-ys-header .header__menu-item span {
     font-size: 16px;
   }
@@ -355,17 +415,18 @@
   .dev-tabs__layout {
     min-height: 40px;
     margin: 16px auto 22px;
+    padding: 0 38px;
   }
 
   .dev-tabs__layout .dev-tabs__buttons {
     justify-content: flex-start;
-    max-width: calc(100% - 84px);
     gap: 8px;
   }
 
   .dev-tabs__layout > .dev-tabs__arrow {
     width: 32px;
     height: 32px;
+    flex-basis: 32px;
     font-size: 18px;
   }
 
@@ -379,66 +440,24 @@
     margin-top: 18px;
   }
 
-  .dev-tabs__panel .product-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 18px 10px !important;
+  .dev-product-slider__track > .dev-product-slider__slide {
+    flex-basis: 75% !important;
+  }
+
+  .dev-product-slider__controls {
+    top: 110px;
+    left: -8px;
+    right: -8px;
+  }
+
+  .dev-product-slider__arrow {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 18px;
   }
 
   .dev-tabs__panel .collection__view-all {
     margin-top: 20px;
   }
 }
-
-
-
-/* Product slider is the positioning parent */
-.dev-product-slider {
-  position: relative;
-}
-
-/* Move arrows over the product cards */
-.dev-product-slider__controls {
-  position: absolute !important;
-  top: 130px;
-  left: -20px !important;
-  right: -20px;
-  width: auto !important;
-  margin: 0 !important;
-  padding: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 5;
-  pointer-events: none;
-}
-
-/* Style the arrows */
-.dev-product-slider__controls button {
-  pointer-events: auto;
-  width: 44px;
-  height: 44px;
-  border: 1px solid #ff3880;
-  border-radius: 50%;
-  background: #fff;
-  color: #ff3880;
-  cursor: pointer;
-}
-
-/* Hide slider counter if present */
-.dev-product-slider__controls .slider-counter {
-  display: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
