@@ -37,7 +37,7 @@
     }
   }
 {%- endstyle -%}
-{% comment %}
+
 {%- liquid
   assign products_to_display = section.settings.collection.all_products_count
 
@@ -63,7 +63,16 @@
     assign show_desktop_slider = true
   endif
 -%}
-  {% endcomment %}
+
+{% comment %}
+ {%- if section.settings.title != blank -%}
+  <h2 class="title inline-richtext {{ section.settings.heading_size }}">
+    {{ section.settings.title }}
+  </h2>
+{%- endif -%}
+
+<div class="collection-tabs-{{ section.id }}" data-collection-tabs>
+  <h2 class="tabs-heading">{{ section.settings.heading | escape }}</h2>
 
 <div
   class="dev-ys-color-{{ section.settings.color_scheme }} isolate gradient"
@@ -73,12 +82,13 @@
     id="collection-{{ section.id }}"
     data-id="{{ section.id }}"
   >
+    {% comment %}
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
       {%- if section.settings.title != blank -%}
         <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           {{ section.settings.title }}
         </h2>
-
+{% endcomment %}
        <div class="collection-tabs-{{ section.id }}" data-collection-tabs>
   <h2 class="tabs-heading">{{ section.settings.heading | escape }}</h2>
 
@@ -157,6 +167,71 @@
         </div>
       {%- endif -%}
     </div>
+{% endcomment %}
+
+
+<div class="collection-tabs-{{ section.id }}" data-collection-tabs>
+
+  {% if section.settings.heading != blank %}
+    <h2 class="tabs-heading">
+      {{ section.settings.heading | escape }}
+    </h2>
+  {% endif %}
+
+  <div class="tabs-buttons" role="tablist">
+    {% for block in section.blocks %}
+      {% assign tab_collection = block.settings.collection %}
+
+      <button
+        type="button"
+        class="tab-button{% if forloop.first %} active{% endif %}"
+        id="tab-{{ section.id }}-{{ block.id }}"
+        role="tab"
+        aria-controls="panel-{{ section.id }}-{{ block.id }}"
+        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+        data-tab-button
+        {{ block.shopify_attributes }}
+      >
+        {{ block.settings.tab_name | default: tab_collection.title | escape }}
+      </button>
+    {% endfor %}
+  </div>
+
+  {% for block in section.blocks %}
+    {% assign tab_collection = block.settings.collection %}
+
+    <div
+      id="panel-{{ section.id }}-{{ block.id }}"
+      role="tabpanel"
+      aria-labelledby="tab-{{ section.id }}-{{ block.id }}"
+      data-tab-panel
+      {% unless forloop.first %}hidden{% endunless %}
+    >
+      {% if tab_collection != blank %}
+        <ul class="grid product-grid grid--4-col-desktop">
+          {% for product in tab_collection.products limit: section.settings.products_to_show %}
+            <li class="grid__item">
+              {% render 'card-product',
+                card_product: product,
+                media_aspect_ratio: section.settings.image_ratio,
+                image_shape: section.settings.image_shape,
+                show_secondary_image: section.settings.show_secondary_image,
+                show_vendor: section.settings.show_vendor,
+                show_rating: section.settings.show_rating,
+                section_id: section.id,
+                quick_add: section.settings.quick_add
+              %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+</div>
+
+
+
 
 
     <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %}{% if show_desktop_slider == false and section.settings.full_width == false %} page-width-desktop{% endif %}{% if show_desktop_slider %} slider-component-desktop{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
