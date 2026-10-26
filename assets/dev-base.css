@@ -26,19 +26,6 @@
   justify-content: center;
 }
 
-.header__menu-item:hover {
-  color: #ff40b1;
-}
-
-.header__menu-item:hover span {
-  text-decoration: none;
-}
-
-.header__inline-menu {
-  display: flex;
-  justify-content: space-evenly;
-}
-
 
 /* ========================================
    3. HEADER ICONS
@@ -131,51 +118,6 @@
 }
 
 
-/* ========================================
-   7. INDEPENDENT ARROW ROW
-======================================== */
-
-/*
-   Arrows are separate from the tab buttons.
-   They sit at opposite ends and are vertically
-   centered relative to the tab row.
-*/
-
-.dev-tabs__arrows {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  min-height: 40px;
-  margin: 0 auto;
-  padding: 0 4%;
-  pointer-events: none;
-}
-
-.dev-tabs__arrows .dev-tabs__arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 40px;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: 1px solid #ff3880;
-  border-radius: 50%;
-  background: #fff;
-  color: #ff3880;
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
-  pointer-events: auto;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.dev-tabs__arrows .dev-tabs__arrow:hover {
-  background: #ff3880;
-  color: #fff;
-}
 
 
 /* ========================================
@@ -363,5 +305,96 @@
 
   .dev-tabs__panel .collection__view-all {
     margin-top: 20px;
+  }
+}
+
+
+/* Outer positioning wrapper */
+.dev-tabs__layout {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  margin: 20px auto 30px;
+}
+
+/* Tabs remain their own flex container */
+.dev-tabs__layout .dev-tabs__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: calc(100% - 120px);
+  gap: 12px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  scrollbar-width: none;
+}
+
+.dev-tabs__layout .dev-tabs__buttons::-webkit-scrollbar {
+  display: none;
+}
+
+/* Arrows positioned independently */
+.dev-tabs__layout > .dev-tabs__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #ff3880;
+  border-radius: 50%;
+  background: #fff;
+  color: #ff3880;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.dev-tabs__layout > .dev-tabs__prev {
+  left: 0;
+}
+
+.dev-tabs__layout > .dev-tabs__next {
+  right: 0;
+}
+
+.dev-tabs__layout > .dev-tabs__arrow:hover {
+  background: #ff3880;
+  color: #fff;
+}
+
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .dev-tabs__layout {
+    min-height: 40px;
+    margin: 16px auto 22px;
+  }
+
+  .dev-tabs__layout .dev-tabs__buttons {
+    justify-content: flex-start;
+    max-width: calc(100% - 84px);
+    gap: 8px;
+  }
+
+  .dev-tabs__layout > .dev-tabs__arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .dev-tabs__layout > .dev-tabs__prev {
+    left: 0;
+  }
+
+  .dev-tabs__layout > .dev-tabs__next {
+    right: 0;
   }
 }
