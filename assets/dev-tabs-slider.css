@@ -1,0 +1,53 @@
+
+.dev-product-slider {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+.dev-product-slider__track {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dev-product-slider__track::-webkit-scrollbar {
+  display: none;
+}
+
+.dev-product-slider__track::before,
+.dev-product-slider__track::after {
+  display: none !important;
+  content: none !important;
+}
+
+.dev-product-slider__track > .dev-product-slider__slide {
+  display: block;
+  flex: 0 0 calc((100% - 48px) / 5) !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: 0;
+  padding: 0 !important;
+  scroll-snap-align: start;
+}
+
+.dev-product-slider__slide .card-wrapper,
+.dev-product-slider__slide .card {
+  width: 100%;
+  max-width: 100%;
+}
+
+.dev-product-slider__slide .card__media {
+  overflow: hidden;
+  border-radius: 12px;
+}
