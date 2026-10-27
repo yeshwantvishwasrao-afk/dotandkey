@@ -79,6 +79,14 @@
   margin-top: auto;
  color: #ff3880;
 }
+.pdp-discount {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #ff3880;
+    padding: 6px 10px;
+    font-weight: 600;
+    border-radius: 4px;
+}
 
 
 .pdp-detail {
