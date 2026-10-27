@@ -3635,3 +3635,51 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+
+
+
+
+
+/* Pink solid quick-add buttons (matches mCaffeine style) */
+.quick-add {
+  width: 100%;
+}
+
+.quick-add__submit.button,
+.quick-add__submit.button--secondary {
+  --color-button: 255, 61, 133;        /* #ff3d85 */
+  --color-button-text: 255, 255, 255;
+  background: #ff3d85;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  min-height: 46px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Dawn draws the outline using pseudo-elements, so remove it */
+.quick-add__submit.button::before,
+.quick-add__submit.button::after {
+  box-shadow: none !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.quick-add__submit.button:hover {
+  background: #e62f73;
+  color: #fff;
+}
+
+/* Sold out */
+.quick-add__submit.button:disabled,
+.quick-add__submit.button[disabled] {
+  background: #f3b6cd;
+  color: #fff;
+  opacity: 1;
+  cursor: not-allowed;
+}
