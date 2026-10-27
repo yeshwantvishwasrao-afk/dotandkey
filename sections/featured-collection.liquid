@@ -121,7 +121,7 @@
           data-tab-panel
           {% unless forloop.first %}hidden{% endunless %}
         >
-          {% if tab_collection != blank and tab_collection.products_count > 0 %}
+                   {% if tab_collection != blank and tab_collection.products_count > 0 %}
 
             <div class="dev-product-slider">
               <ul
@@ -146,7 +146,33 @@
                   </li>
                 {% endfor %}
               </ul>
+
+              <div class="dev-product-slider__controls">
+                <button type="button" class="dev-product-slider__arrow"
+                  data-product-prev aria-label="Previous products">
+                  &#10094;
+                </button>
+                <button type="button" class="dev-product-slider__arrow"
+                  data-product-next aria-label="Next products">
+                  &#10095;
+                </button>
               </div>
+            </div><!-- closes .dev-product-slider -->
+
+            {% if block.settings.show_view_all %}
+              <div class="center collection__view-all">
+                <a
+                  href="{{ tab_collection.url }}"
+                  class="button button--{{ block.settings.view_all_style }}"
+                >
+                  View all
+                </a>
+              </div>
+            {% endif %}
+
+          {% else %}
+            <p>This collection is empty or has not been selected.</p>
+          {% endif %}
 
 
      <div class="dev-product-slider__controls">
@@ -174,7 +200,7 @@
 
           {% else %}
             <p>This collection is empty or has not been selected.</p>
-          {% endif %}
+          
         </div>
       {% endfor %}
     </div>
