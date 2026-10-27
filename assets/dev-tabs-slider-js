@@ -1,0 +1,68 @@
+(function () {
+  function initTabs(section) {
+    if (section.dataset.tabsInitialized === 'true') return;
+    section.dataset.tabsInitialized = 'true';
+
+    var buttons = section.querySelectorAll('[data-tab-button]');
+    var panels = section.querySelectorAll('[data-tab-panel]');
+    var tabList = section.querySelector('.dev-tabs__buttons');
+    var prevTab = section.querySelector('[data-tabs-prev]');
+    var nextTab = section.querySelector('[data-tabs-next]');
+
+    // Show one tab, hide the others
+    function activate(index) {
+      buttons.forEach(function (btn, i) {
+        var on = i === index;
+        btn.classList.toggle('active', on);
+        btn.setAttribute('aria-selected', String(on));
+        btn.setAttribute('tabindex', on ? '0' : '-1');
+      });
+      panels.forEach(function (panel, i) {
+        panel.hidden = i !== index;
+      });
+    }
+
+    buttons.forEach(function (btn, i) {
+      btn.addEventListener('click', function () { activate(i); });
+    });
+    activate(0);
+
+    // Tab-bar arrows (only shown when the tabs overflow)
+    function updateTabArrows() {
+      if (!tabList || !prevTab || !nextTab) return;
+      var overflow = tabList.scrollWidth > tabList.clientWidth + 2;
+      prevTab.classList.toggle('hidden', !overflow);
+      nextTab.classList.toggle('hidden', !overflow);
+    }
+    if (tabList && prevTab && nextTab) {
+      prevTab.addEventListener('click', function () {
+        tabList.scrollBy({ left: -180, behavior: 'smooth' });
+      });
+      nextTab.addEventListener('click', function () {
+        tabList.scrollBy({ left: 180, behavior: 'smooth' });
+      });
+      window.addEventListener('resize', updateTabArrows);
+      updateTabArrows();
+    }
+
+    // Product arrows (one listener for every panel)
+    section.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-product-prev], [data-product-next]');
+      if (!btn) return;
+      var track = btn.closest('.dev-product-slider').querySelector('.dev-product-slider__track');
+      var direction = btn.hasAttribute('data-product-next') ? 1 : -1;
+      track.scrollBy({ left: direction * track.clientWidth * 0.8, behavior: 'smooth' });
+    });
+  }
+
+  function init() {
+    document.querySelectorAll('[data-collection-tabs]').forEach(initTabs);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  document.addEventListener('shopify:section:load', init);
+})();
