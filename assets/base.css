@@ -3737,8 +3737,10 @@ details-disclosure > details {
 }
 
 .pdp-discount {
-  white-space: nowrap;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #ff3d85;
+    display: inline-block;
+    background: #ffffffff; 
+    color: #ff3880;
+    padding: 6px 10px;
+    font-weight: 600;
+    border-radius: 4px;
 }
