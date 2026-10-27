@@ -3642,27 +3642,32 @@ details-disclosure > details {
 
 
 /* Pink solid quick-add buttons (matches mCaffeine style) */
+/* ===== Quick-add buttons (pink) ===== */
 .quick-add {
   width: 100%;
+  margin: 0;
+  padding-inline: 0;
+  box-sizing: border-box;
 }
 
-.quick-add__submit.button,
-.quick-add__submit.button--secondary {
-  --color-button: 255, 61, 133;        /* #ff3d85 */
+.quick-add__submit.button {
+  --color-button: 255, 61, 133;
   --color-button-text: 255, 255, 255;
   background: #ff3d85;
   color: #fff;
   border: 0;
   border-radius: 6px;
+  min-width: 0;
   min-height: 46px;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   font-weight: 700;
   font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
-/* Dawn draws the outline using pseudo-elements, so remove it */
 .quick-add__submit.button::before,
 .quick-add__submit.button::after {
   box-shadow: none !important;
@@ -3675,11 +3680,65 @@ details-disclosure > details {
   color: #fff;
 }
 
-/* Sold out */
 .quick-add__submit.button:disabled,
 .quick-add__submit.button[disabled] {
   background: #f3b6cd;
   color: #fff;
   opacity: 1;
   cursor: not-allowed;
+}
+
+.card__content,
+.card__information {
+  min-width: 0;
+}
+
+/* ===== Price + discount row ===== */
+.price-discount-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+}
+
+.price-discount-row .price {
+  width: auto;
+}
+
+/* Normal products: only the regular price */
+.price-discount-row .price:not(.price--on-sale) .price__sale {
+  display: none;
+}
+
+/* Sale products: sale price first, then struck MRP */
+.price-discount-row .price--on-sale .price__regular {
+  display: none;
+}
+.price-discount-row .price--on-sale .price__sale {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.price-discount-row .price-item {
+  white-space: nowrap;
+}
+.price-discount-row .price-item--sale,
+.price-discount-row .price__regular .price-item--regular {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+.price-discount-row .price--on-sale .price-item--regular {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #888;
+}
+
+.pdp-discount {
+  white-space: nowrap;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ff3d85;
 }
