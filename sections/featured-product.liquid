@@ -663,37 +663,7 @@
 
 
 
-{% assign variant = product.selected_or_first_available_variant %}
-{% assign length = product.metafields.custom.snowboard_length %}
-{% assign material = product.metafields.custom.material %}
 
-<div class="pdp-details">
-
-  {% if variant.compare_at_price > variant.price %}
-    {% assign discount = variant.compare_at_price
-      | minus: variant.price
-      | times: 100.0
-      | divided_by: variant.compare_at_price
-      | round
-    %}
-    <p class="pdp-discount">{{ discount }}% OFF</p>
-  {% endif %}
-
-  {% if length != blank %}
-    <p class="pdp-detail">
-      <strong>Snowboard Length:</strong>
-      {{ length.value }}
-    </p>
-  {% endif %}
-
-  {% if material != blank %}
-    <p class="pdp-detail">
-      <strong>Material:</strong>
-      {{ material.value }}
-    </p>
-  {% endif %}
-
-</div>
 
 
 
@@ -890,7 +860,7 @@
                         </span>
                       {%- endif -%}
                     </div>
-                    {%- if product.quantity_price_breaks_configured? -%}
+                    {%- if product.quantity_price_breaks_configured -%}
                       <volume-pricing class="parent-display" id="Volume-{{ section.id }}">
                         {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
                           <span class="caption-large">{{ 'products.product.volume_pricing.title' | t }}</span>
