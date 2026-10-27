@@ -77,14 +77,14 @@
   align-items: baseline;
   gap: 8px;
   margin-top: auto;
+ color: #ff3880;
 }
 
 
 .pdp-detail {
   margin: 5px 0;
   font-size: 13px;
-  
-    color: #ff3880
+  color: #333;
 }
 
 .pdp-detail strong {
