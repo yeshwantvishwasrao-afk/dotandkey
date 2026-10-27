@@ -42,7 +42,7 @@
     "inputs_shadow_horizontal_offset": 0,
     "inputs_shadow_vertical_offset": 4,
     "inputs_shadow_blur": 5,
-    "card_style": "standard",
+    "card_style": "card",
     "card_image_padding": 0,
     "card_text_alignment": "left",
     "card_color_scheme": "scheme-2",
@@ -159,11 +159,11 @@
         "settings": {
           "background": "#f3f3f3",
           "background_gradient": "",
-          "text": "#121212",
-          "button": "#121212",
+          "text": "#FF4082",
+          "button": "#FF4082",
           "button_label": "#f3f3f3",
-          "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "secondary_button_label": "#FF1EBC",
+          "shadow": "#FF4082"
         }
       },
       "scheme-3": {
