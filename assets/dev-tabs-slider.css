@@ -106,7 +106,7 @@
   pointer-events: auto;
   z-index: 2;
 }
-.dev-product-slider__arrow[data-product-prev] { left: 8px; }
+.dev-product-slider__arrow[data-product-prev] { left: 2px; }
 .dev-product-slider__arrow[data-product-next] { right: 8px; }
 
 /* ---------- View all button ---------- */
