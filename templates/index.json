@@ -109,7 +109,7 @@
           "type": "collection_tab",
           "settings": {
             "tab_name": "OXYGEN",
-            "tab_collection": "all-product",
+            "tab_collection": "automated-collection",
             "products_to_show": 25,
             "columns_desktop": 4,
             "columns_mobile": "2",
