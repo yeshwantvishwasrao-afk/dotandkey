@@ -1,4 +1,261 @@
 
+/* ========================================
+   1. ANNOUNCEMENT BAR
+======================================== */
+
+.dev-ys-announcement-bar .announcement-bar__message {
+  padding: 0.5rem 0;
+  min-height: auto;
+  font-size: 16px;
+}
+
+.dev-ys-announcement-bar .announcement-bar__link:hover {
+  text-decoration: none;
+}
+
+
+/* ========================================
+   2. HEADER AND NAVIGATION
+======================================== */
+
+.dev-ys-header .header__menu-item span {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  display: flex;
+  justify-content: center;
+}
+
+.header__menu-item:hover {
+  color: #ff40b1;
+}
+
+.header__menu-item:hover span {
+  text-decoration: none;
+}
+
+.header__inline-menu {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+/* ========================================
+   3. HEADER ICONS
+======================================== */
+
+.header__icons .dev-ys-cart-icon svg,
+.header__icons .dev-ys-account-icon svg {
+  width: 28px;
+  min-height: 28px;
+}
+
+
+/* ========================================
+   4. COLLECTION HEADING
+======================================== */
+
+.collection__title.title-wrapper {
+  text-align: center;
+}
+
+.dev-heading h2 {
+  margin-bottom: 24px;
+}
+
+
+/* ========================================
+   5. PRODUCT PRICE AND DISCOUNT
+======================================== */
+
+.pdp-details {
+  margin-top: 8px;
+}
+
+.pdp-discount {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: auto;
+}
+
+
+.pdp-detail {
+  margin: 5px 0;
+  font-size: 13px;
+  color: #333;
+}
+
+.pdp-detail strong {
+  font-weight: 600;
+  color: #111;
+}
+
+.price-discount-row {
+     display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.price-discount-row .price,
+.price-discount-row .pdp-discount {
+  margin: 0;
+}
+
+.price-discount-row .pdp-discount {
+  white-space: nowrap;
+}
+
+
+
+
+/* ========================================
+   6. COLLECTION TABS SECTION
+======================================== */
+
+.dev-tabs {
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+.collection-tabs [data-collection-tabs] .tabs-heading {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 600;
+  margin: 0 0 28px;
+}
+
+
+/* ========================================
+   7. TAB NAVIGATION WRAPPER
+======================================== */
+
+.dev-tabs__layout {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  margin: 20px auto 30px;
+  padding: 0 48px;
+}
+
+
+/* ========================================
+   8. TAB BUTTONS
+======================================== */
+
+.dev-tabs__layout .dev-tabs__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  gap: 12px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dev-tabs__buttons::-webkit-scrollbar {
+  display: none;
+}
+
+.dev-tabs__button {
+  flex: 0 0 auto;
+  padding: 13px 30px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  background: #f3f3f3;
+  color: #333;
+  font-size: 18px;
+  line-height: 1.3;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dev-tabs__button.active {
+  background: #fff;
+  color: #ff3880;
+  border-color: #ff3880;
+  box-shadow: 0 2px 8px rgba(255, 56, 128, 0.12);
+}
+
+.dev-tabs__button:hover {
+  border-color: #ff3880;
+  color: #ff3880;
+}
+
+.dev-tabs__button:focus-visible,
+.dev-tabs__arrow:focus-visible {
+  outline: 2px solid #ff3880;
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   9. TAB NAVIGATION ARROWS
+======================================== */
+
+.dev-tabs__layout > .dev-tabs__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #ff3880;
+  border-radius: 50%;
+  background: #fff;
+  color: #ff3880;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.dev-tabs__layout > .dev-tabs__prev {
+  left: 0;
+}
+
+.dev-tabs__layout > .dev-tabs__next {
+  right: 0;
+}
+
+.dev-tabs__layout > .dev-tabs__arrow:hover {
+  background: #ff3880;
+  color: #fff;
+}
+
+
+/* ========================================
+   10. PRODUCT PANELS
+======================================== */
+
+.dev-tabs__content {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.dev-tabs__panel[hidden] {
+  display: none !important;
+}
+
+
+/* ========================================
+   11. HORIZONTAL PRODUCT CAROUSEL
+======================================== */
+
 .dev-product-slider {
   position: relative;
   width: 100%;
@@ -50,4 +307,156 @@
 .dev-product-slider__slide .card__media {
   overflow: hidden;
   border-radius: 12px;
+}
+
+
+/* ========================================
+   12. PRODUCT CAROUSEL ARROWS
+======================================== */
+
+.dev-product-slider__controls {
+  position: absolute;
+  top: 140px;
+  left: -22px;
+  right: -22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.dev-product-slider__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  padding: 0;
+  border: 1px solid #ff3880;
+  border-radius: 50%;
+  background: #fff;
+  color: #ff3880;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.dev-product-slider__arrow:hover {
+  background: #ff3880;
+  color: #fff;
+}
+
+.dev-product-slider__arrow:focus-visible {
+  outline: 2px solid #ff3880;
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   13. VIEW ALL BUTTON
+======================================== */
+
+.dev-tabs__panel .collection__view-all {
+  margin-top: 28px;
+}
+
+
+/* ========================================
+   14. TABLET
+======================================== */
+
+@media screen and (max-width: 989px) {
+  .dev-tabs__button {
+    padding: 12px 22px;
+    font-size: 16px;
+  }
+
+  .dev-product-slider__track > .dev-product-slider__slide {
+    flex-basis: calc((100% - 24px) / 3) !important;
+  }
+
+  .dev-product-slider__controls {
+    left: -12px;
+    right: -12px;
+  }
+}
+
+
+/* ========================================
+   15. MOBILE
+======================================== */
+
+@media screen and (max-width: 749px) {
+  .dev-ys-header .header__menu-item span {
+    font-size: 16px;
+  }
+
+  .dev-tabs {
+    padding: 16px 0;
+  }
+
+  .dev-heading h2 {
+    margin-bottom: 18px;
+  }
+
+  .collection-tabs [data-collection-tabs] .tabs-heading {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .dev-tabs__layout {
+    min-height: 40px;
+    margin: 16px auto 22px;
+    padding: 0 38px;
+  }
+
+  .dev-tabs__layout .dev-tabs__buttons {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .dev-tabs__layout > .dev-tabs__arrow {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+    font-size: 18px;
+  }
+
+  .dev-tabs__button {
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 11px;
+  }
+
+  .dev-tabs__content {
+    margin-top: 18px;
+  }
+
+  .dev-product-slider__track > .dev-product-slider__slide {
+    flex-basis: 75% !important;
+  }
+
+  .dev-product-slider__controls {
+    top: 110px;
+    left: -8px;
+    right: -8px;
+  }
+
+  .dev-product-slider__arrow {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 18px;
+  }
+
+  .dev-tabs__panel .collection__view-all {
+    margin-top: 20px;
+  }
 }
