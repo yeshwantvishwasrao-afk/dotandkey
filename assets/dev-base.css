@@ -73,12 +73,12 @@
 }
 
 .pdp-discount {
-      display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-top: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: auto;
 }
-}
+
 
 .pdp-detail {
   margin: 5px 0;
@@ -106,13 +106,7 @@
 .price-discount-row .pdp-discount {
   white-space: nowrap;
 }
-price-discount-row{
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-top: auto;
-}
-  
+
 
 
 
