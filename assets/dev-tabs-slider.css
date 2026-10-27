@@ -460,3 +460,9 @@
     margin-top: 20px;
   }
 }
+.dev-tabs__panel .scroll-trigger,
+.dev-tabs__panel .scroll-trigger.animate--slide-in {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
