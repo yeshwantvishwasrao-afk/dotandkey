@@ -63,10 +63,7 @@
   margin-bottom: 24px;
 }
 
-
-/* ========================================
-   5. PRODUCT PRICE AND DISCOUNT
-======================================== */
+/*
 
 .pdp-details {
   margin-top: 8px;
@@ -100,7 +97,7 @@
   color: #111;
 }
 
-/* Price + discount on one line */
+
 .price-discount-row {
   display: flex;
   align-items: center;
@@ -115,7 +112,7 @@
 .price-discount-row .price__container,
 .price-discount-row .price__sale {
   display: flex;
-  flex-direction: row-reverse;   /* sale price first, then struck MRP */
+  flex-direction: row-reverse;   
   flex-wrap: nowrap;
   align-items: baseline;
   gap: 8px;
@@ -135,7 +132,7 @@
   font-size: 1.2rem;
   font-weight: 600;
   color: #ff3d85;
-}
+}*/
 
 
 
