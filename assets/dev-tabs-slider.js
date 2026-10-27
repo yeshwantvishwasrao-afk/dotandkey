@@ -24,12 +24,17 @@
         });
 
         panels.forEach(function (panel, i) {
-          const active = i === index;
-          panel.hidden = !active;
-          panel.classList.toggle('active', active);
-        });
-      }
+  const active = i === index;
 
+  panel.hidden = !active;
+  panel.classList.toggle('active', active);
+
+  if (active) {
+    panel.querySelectorAll('.scroll-trigger').forEach(function (el) {
+      el.classList.remove('scroll-trigger--offscreen');
+    });
+  }
+});
       buttons.forEach(function (button, index) {
         button.addEventListener('click', function (event) {
           event.preventDefault();
