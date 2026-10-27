@@ -251,11 +251,7 @@
     </p>
   {% endif %}
 </div>
-              {%- if card_product.quantity_price_breaks_configured? -%}
-
-                
-
-
+              {%- if card_product.quantity_price_breaks_configured -%}
 
                 {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                   {% liquid
