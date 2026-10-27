@@ -25,10 +25,10 @@
   inset: 0;
   pointer-events: none;
 }
-
+/*
 .dev-product-slider__arrow {
   position: absolute;
-  top: 40%;                 /* about the middle of the images; use 50% to center on the whole card */
+  top: 40%;                 
   transform: translateY(-50%);
   width: 44px;
   height: 44px;
@@ -41,8 +41,7 @@
   z-index: 2;
 }
 .dev-product-slider__arrow[data-product-prev] { left: 8px; }
-.dev-product-slider__arrow[data-product-next] { right: 8px; }
-
+.dev-product-slider__arrow[data-product-next] { right: 8px; }*/
 .dev-product-slider { position: relative; }
 .dev-product-slider__controls { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 .dev-product-slider__arrow {
@@ -53,6 +52,8 @@
 }
 .dev-product-slider__arrow[data-product-prev] { left: 8px; }
 .dev-product-slider__arrow[data-product-next] { right: 8px; }
+
+
 
 @media (max-width: 749px) {
   .dev-product-slider__slide { flex-basis: calc((100% - 16px) / 2); }
