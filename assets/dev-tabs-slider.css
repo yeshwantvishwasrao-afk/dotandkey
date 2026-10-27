@@ -1,0 +1,59 @@
+.dev-product-slider {
+  position: relative;
+}
+
+.dev-product-slider__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.dev-product-slider__track::-webkit-scrollbar { display: none; }
+
+.dev-product-slider__slide {
+  flex: 0 0 calc((100% - 48px) / 4); /* 4 cards per view */
+  scroll-snap-align: start;
+  max-width: none;
+}
+
+.dev-product-slider__controls {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dev-product-slider__arrow {
+  position: absolute;
+  top: 40%;                 /* about the middle of the images; use 50% to center on the whole card */
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #ff3880;
+  background: #fff;
+  color: #ff3880;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 2;
+}
+.dev-product-slider__arrow[data-product-prev] { left: 8px; }
+.dev-product-slider__arrow[data-product-next] { right: 8px; }
+
+.dev-product-slider { position: relative; }
+.dev-product-slider__controls { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.dev-product-slider__arrow {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  pointer-events: auto;
+}
+.dev-product-slider__arrow[data-product-prev] { left: 8px; }
+.dev-product-slider__arrow[data-product-next] { right: 8px; }
+
+@media (max-width: 749px) {
+  .dev-product-slider__slide { flex-basis: calc((100% - 16px) / 2); }
+}
