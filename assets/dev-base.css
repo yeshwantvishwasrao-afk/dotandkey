@@ -83,7 +83,8 @@
 .pdp-detail {
   margin: 5px 0;
   font-size: 13px;
-  color: #333;
+  
+    color: #ff3880
 }
 
 .pdp-detail strong {
