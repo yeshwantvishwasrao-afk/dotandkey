@@ -1,0 +1,126 @@
+/* =========================================================
+   dev-category-tiles.css
+   Parent class: .dev-ys-category-tiles
+   ========================================================= */
+
+.dev-ys-category-tiles {
+  padding: 24px 0;
+}
+
+/* Scrollable row: 4 tiles on desktop, swipe on mobile */
+.dev-ys-category-tiles .dev-ys-category-tiles__track {
+  display: flex;
+  gap: 25px;
+  padding: 0 25px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.dev-ys-category-tiles .dev-ys-category-tiles__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tile */
+.dev-ys-category-tiles .dev-ys-category-tile {
+  position: relative;
+  flex: 0 0 calc((100% - 75px - 50px) / 4); /* 4 visible, small peek not needed */
+  aspect-ratio: 1.17 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  text-decoration: none;
+  color: #fff;
+}
+
+.dev-ys-category-tiles .dev-ys-category-tile__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.dev-ys-category-tiles .dev-ys-category-tile__placeholder {
+  background: linear-gradient(135deg, #ffb3cf, #ffd9a8);
+}
+
+.dev-ys-category-tiles .dev-ys-category-tile:hover .dev-ys-category-tile__img {
+  transform: scale(1.05);
+}
+
+/* Dark gradient at the bottom so the white title is readable */
+.dev-ys-category-tiles .dev-ys-category-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0) 45%);
+  pointer-events: none;
+}
+
+/* Title bottom-left */
+.dev-ys-category-tiles .dev-ys-category-tile__title {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  right: 70px;
+  z-index: 2;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Make the whole tile clickable through the title link */
+.dev-ys-category-tiles .dev-ys-category-tile__title::before {
+  content: "";
+  position: absolute;
+  inset: -400px -100px -20px -20px;
+}
+
+/* Round arrow bottom-right */
+.dev-ys-category-tiles .dev-ys-category-tile__arrow {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.dev-ys-category-tiles .dev-ys-category-tile__arrow:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* Tablet */
+@media (max-width: 989px) {
+  .dev-ys-category-tiles .dev-ys-category-tile {
+    flex-basis: 45%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 749px) {
+  .dev-ys-category-tiles .dev-ys-category-tiles__track {
+    gap: 14px;
+    padding: 0 16px;
+  }
+  .dev-ys-category-tiles .dev-ys-category-tile {
+    flex-basis: 72%;
+  }
+  .dev-ys-category-tiles .dev-ys-category-tile__title {
+    font-size: 1.8rem;
+  }
+}
