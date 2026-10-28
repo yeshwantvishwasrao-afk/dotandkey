@@ -29,6 +29,7 @@
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'quick-order-list.css' | asset_url | stylesheet_tag }}
   {{ 'quantity-popover.css' | asset_url | stylesheet_tag }}
+  {{ 'dev-component-card.css' | asset_url | stylesheet_tag }}
 {%- endunless -%}
 {%- if card_product and card_product != empty -%}
   {%- liquid
@@ -44,7 +45,8 @@
   -%}
 
   <product-component view-event-payload="{{ card_product | standard_event_data: 'view', context: product_view_context | escape }}">
-    <div class="card-wrapper product-card-wrapper underline-links-hover">
+    {%- comment -%} dev-ys-product-card is the parent class every custom CSS rule is scoped under {%- endcomment -%}
+    <div class="card-wrapper product-card-wrapper underline-links-hover dev-ys-product-card">
       <div
         class="
           card card--{{ settings.card_style }}
@@ -110,8 +112,8 @@
               </div>
             </div>
           {%- endif -%}
-          <div class="dev-ys-card__content">
-            <div class="dev-ys-card__information">
+          <div class="card__content">
+            <div class="card__information">
               <h3
                 class="card__heading"
                 {% if card_product.featured_media == null and settings.card_style == 'standard' %}
@@ -164,7 +166,7 @@
                 {{ card_product.title | escape }}
               </a>
             </h3>
-            <div class="dev-ys-card-information">
+            <div class="card-information">
               {%- if show_vendor -%}
                 <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
                 <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
@@ -207,42 +209,43 @@
                   </span>
                 </p>
               {%- endif -%}
-{% assign variant = card_product.selected_or_first_available_variant %}
-{% assign sizes = card_product.metafields.custom.sizes.value %}
-{% assign offer_title = card_product.metafields.custom.offer_title.value %}
 
-{% if sizes.size > 0 %}
-  <div class="dev-ys-sizes">
-    {% for size in sizes %}
-      <span class="dev-ys-size{% if forloop.first %} is-active{% endif %}">{{ size | escape }}</span>
-    {% endfor %}
-  </div>
-{% endif %}
+              {%- comment -%} ===== dev-ys custom block: sizes, offer, price + discount ===== {%- endcomment -%}
+              {% assign variant = card_product.selected_or_first_available_variant %}
+              {% assign sizes = card_product.metafields.custom.sizes.value %}
+              {% assign offer_title = card_product.metafields.custom.offer_title.value %}
 
-{% if offer_title != blank %}
-  <div class="dev-ys-pc-offer">{{ offer_title | escape }}</div>
-{% endif %}
+              {% if sizes.size > 0 %}
+                <div class="dev-ys-sizes">
+                  {% for size in sizes %}
+                    <span class="dev-ys-size{% if forloop.first %} is-active{% endif %}">{{ size | escape }}</span>
+                  {% endfor %}
+                </div>
+              {% endif %}
 
-<div class="dev-ys-price-row">
-  {% render 'price',
-    product: card_product,
-    price_class: '',
-    show_compare_at_price: true
-  %}
+              {% if offer_title != blank %}
+                <div class="dev-ys-pc-offer">{{ offer_title | escape }}</div>
+              {% endif %}
 
-  {% if variant.compare_at_price > variant.price %}
-    {% assign discount = variant.compare_at_price
-      | minus: variant.price
-      | times: 100.0
-      | divided_by: variant.compare_at_price
-      | round
-    %}
-    <span class="dev-ys-discount">({{ discount }}% OFF)</span>
-  {% endif %}
-</div>
+              <div class="dev-ys-price-row">
+                {% render 'price',
+                  product: card_product,
+                  price_class: '',
+                  show_compare_at_price: true
+                %}
 
-    
-              {%- if card_product.quantity_price_breaks_configured -%}
+                {% if variant.compare_at_price > variant.price %}
+                  {% assign discount = variant.compare_at_price
+                    | minus: variant.price
+                    | times: 100.0
+                    | divided_by: variant.compare_at_price
+                    | round
+                  %}
+                  <span class="dev-ys-discount">({{ discount }}% OFF)</span>
+                {% endif %}
+              </div>
+
+              {%- if card_product.quantity_price_breaks_configured? -%}
 
                 {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
                   {% liquid
