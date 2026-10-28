@@ -111,5 +111,7 @@
 
 /* ---------- View all button ---------- */
 .collection__view-all {
-  margin-top: 33px;
+ display: flex;
+    justify-content: center;
+    margin-top: 15px
 }
