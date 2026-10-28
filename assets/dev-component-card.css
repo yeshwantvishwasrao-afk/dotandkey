@@ -1,6 +1,5 @@
-
-
-.dev-ys-card-information > .dev-ys-pc-offer {
+/* ===== Offer pill ===== */
+ .dev-ys-pc-offer {
   display: inline-block;
   margin-top: 6px !important;
   margin-bottom: 10px;
@@ -13,8 +12,8 @@
   letter-spacing: 0;
 }
 
-
-.dev-ys-card-information > .dev-ys-sizes {
+/* ===== Size pills ===== */
+    .dev-ys-sizes {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -35,7 +34,8 @@
   color: #ff3d85;
 }
 
-.dev-ys-card-information > .dev-ys-price-row {
+/* ===== Price + discount row ===== */
+    .dev-ys-price-row {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
@@ -44,8 +44,10 @@
 }
 .dev-ys-price-row .price { width: auto; }
 
+/* Normal products: only the regular price */
 .dev-ys-price-row .price:not(.price--on-sale) .price__sale { display: none; }
 
+/* Sale products: sale price first, then struck MRP */
 .dev-ys-price-row .price--on-sale .price__regular { display: none; }
 .dev-ys-price-row .price--on-sale .price__sale {
   display: flex;
