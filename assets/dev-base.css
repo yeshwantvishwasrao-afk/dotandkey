@@ -22,7 +22,7 @@
 
 
 }
-
+.dev.ys-
 
 
 
@@ -57,6 +57,8 @@
 .header__icons .dev-ys-account-icon svg {
   width: 28px;
   min-height: 28px;
+  gap:12px;
+  
 }
 
  
