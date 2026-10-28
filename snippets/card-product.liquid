@@ -207,15 +207,14 @@
                   </span>
                 </p>
               {%- endif -%}
-
 {% assign variant = card_product.selected_or_first_available_variant %}
 {% assign sizes = card_product.metafields.custom.sizes.value %}
 {% assign offer_title = card_product.metafields.custom.offer_title.value %}
 
 {% if sizes.size > 0 %}
-  <div class="pc-sizes">
+  <div class="dev-ys-sizes">
     {% for size in sizes %}
-      <span class="pc-size{% if forloop.first %} is-active{% endif %}">{{ size | escape }}</span>
+      <span class="dev-ys-size{% if forloop.first %} is-active{% endif %}">{{ size | escape }}</span>
     {% endfor %}
   </div>
 {% endif %}
@@ -224,7 +223,7 @@
   <div class="dev-ys-pc-offer">{{ offer_title | escape }}</div>
 {% endif %}
 
-<div class="price-discount-row">
+<div class="dev-ys-price-row">
   {% render 'price',
     product: card_product,
     price_class: '',
@@ -238,13 +237,9 @@
       | divided_by: variant.compare_at_price
       | round
     %}
-    <span class="pdp-discount">({{ discount }}% OFF)</span>
+    <span class="dev-ys-discount">({{ discount }}% OFF)</span>
   {% endif %}
 </div>
-
-
-    
-
 
     
               {%- if card_product.quantity_price_breaks_configured -%}
