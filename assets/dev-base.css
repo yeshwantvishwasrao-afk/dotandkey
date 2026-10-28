@@ -1,7 +1,7 @@
 
-/* ========================================
+
    1. ANNOUNCEMENT BAR
-======================================== */
+
 
 .dev-ys-announcement-bar .announcement-bar__message {
   padding: 0.5rem 0;
@@ -14,9 +14,8 @@
 }
 
 
-/* ========================================
    2. HEADER AND NAVIGATION
-======================================== */
+
 
 .dev-ys-header .header__menu-item span {
   font-size: 20px;
@@ -39,10 +38,9 @@
   justify-content: space-evenly;
 }
 
-
-/* ========================================
+ 
    3. HEADER ICONS
-======================================== */
+   
 
 .header__icons .dev-ys-cart-icon svg,
 .header__icons .dev-ys-account-icon svg {
@@ -50,10 +48,9 @@
   min-height: 28px;
 }
 
-
-/* ========================================
+ 
    4. COLLECTION HEADING
-======================================== */
+   
 
 .collection__title.title-wrapper {
   text-align: center;
@@ -62,83 +59,128 @@
 .dev-heading h2 {
   margin-bottom: 24px;
 }
-
-/*
-
-.pdp-details {
-  margin-top: 8px;
-}
-
-.pdp-discount {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin-top: auto;
- color: #ff3880;
-}
-.pdp-discount {
-    display: inline-block;
-    background: #e8f5e9;
-    color: #ff3880;
-    padding: 6px 10px;
-    font-weight: 600;
-    border-radius: 4px;
-}
-
-
-.pdp-detail {
-  margin: 5px 0;
-  font-size: 13px;
-  color: #333;
-}
-
-.pdp-detail strong {
+5.price discount
+/* ===== Card typography (match mCaffeine) ===== */
+.dev-product-slider__slide .card__heading,
+.dev-product-slider__slide .card__heading a {
+  font-size: 1.5rem;
   font-weight: 600;
-  color: #111;
+  letter-spacing: 0;
+  line-height: 1.35;
+  color: #1f2340;
+  text-transform: none;
 }
 
+.dev-product-slider__slide .card-information,
+.dev-product-slider__slide .card-information * {
+  letter-spacing: 0;
+}
 
-.price-discount-row {
+/* ===== Size pills ===== */
+.pc-sizes {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
   gap: 8px;
+  margin: 12px 0 8px;
+}
+.pc-size {
+  padding: 6px 14px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #222;
+  background: #fff;
+}
+.pc-size.is-active {
+  border-color: #ff3d85;
+  color: #ff3d85;
 }
 
-.price-discount-row .price {
-  width: auto;
+/* ===== Offer pill ===== */
+.pc-offer {
+  display: inline-block;
+  margin: 6px 0 10px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #ffe6ef;
+  color: #ff3d85;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
-.price-discount-row .price__container,
-.price-discount-row .price__sale {
+/* ===== Price + discount row ===== */
+.price-discount-row {
   display: flex;
-  flex-direction: row-reverse;   
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  margin-top: 8px;
+}
+.price-discount-row .price { width: auto; }
+
+.price-discount-row .price:not(.price--on-sale) .price__sale { display: none; }
+
+.price-discount-row .price--on-sale .price__regular { display: none; }
+.price-discount-row .price--on-sale .price__sale {
+  display: flex;
+  flex-direction: row-reverse;
   flex-wrap: nowrap;
   align-items: baseline;
   gap: 8px;
 }
 
-.price-discount-row .price-item--sale {
-  font-size: 1.8rem;
+.price-discount-row .price-item { white-space: nowrap; letter-spacing: 0; }
+.price-discount-row .price-item--sale,
+.price-discount-row .price__regular .price-item--regular {
+  font-size: 2rem;
   font-weight: 700;
+  color: #111;
 }
-
-.price-discount-row .price-item--regular {
-  font-size: 1.3rem;
+.price-discount-row .price--on-sale .price-item--regular {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #888;
 }
 
 .pdp-discount {
   white-space: nowrap;
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 500;
   color: #ff3d85;
-}*/
+}
+
+/* ===== Equal-height cards, button pinned to the bottom ===== */
+.dev-product-slider__slide .card-wrapper,
+.dev-product-slider__slide .card {
+  height: 100%;
+}
+.dev-product-slider__slide .card {
+  display: flex;
+  flex-direction: column;
+}
+.dev-product-slider__slide .card > .card__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.dev-product-slider__slide .card__information {
+  flex: 1;
+  padding: 12px 0;
+}
+.dev-product-slider__slide .quick-add {
+  margin: 12px 0 0;
+  padding: 0;
+  width: 100%;
+} 
 
 
 
-/* ========================================
    6. COLLECTION TABS SECTION
-======================================== */
+
 
 .dev-tabs {
   width: 100%;
@@ -153,10 +195,9 @@
   margin: 0 0 28px;
 }
 
-
-/* ========================================
+ 
    7. TAB NAVIGATION WRAPPER
-======================================== */
+   
 
 .dev-tabs__layout {
   position: relative;
@@ -169,10 +210,9 @@
   padding: 0 48px;
 }
 
-
-/* ========================================
+ 
    8. TAB BUTTONS
-======================================== */
+   
 
 .dev-tabs__layout .dev-tabs__buttons {
   display: flex;
@@ -225,10 +265,9 @@
   outline-offset: 3px;
 }
 
-
-/* ========================================
+ 
    9. TAB NAVIGATION ARROWS
-======================================== */
+   
 
 .dev-tabs__layout > .dev-tabs__arrow {
   position: absolute;
@@ -263,10 +302,9 @@
   color: #fff;
 }
 
-
-/* ========================================
+ 
    10. PRODUCT PANELS
-======================================== */
+   
 
 .dev-tabs__content {
   width: 100%;
@@ -277,10 +315,9 @@
   display: none !important;
 }
 
-
-/* ========================================
+ 
    11. HORIZONTAL PRODUCT CAROUSEL
-======================================== */
+   
 
 .dev-product-slider {
  display: block;
@@ -338,10 +375,9 @@
   border-radius: 12px;
 }
 
-
-/* ========================================
+ 
    12. PRODUCT CAROUSEL ARROWS
-======================================== */
+   
 
 .dev-product-slider__controls {
   position: absolute;
@@ -387,19 +423,17 @@
   outline-offset: 3px;
 }
 
-
-/* ========================================
+ 
    13. VIEW ALL BUTTON
-======================================== */
+   
 
 .dev-tabs__panel .collection__view-all {
   margin-top: 28px;
 }
 
-
-/* ========================================
+ 
    14. TABLET
-======================================== */
+   
 
 @media screen and (max-width: 989px) {
   .dev-tabs__button {
@@ -417,10 +451,9 @@
   }
 }
 
-
-/* ========================================
+ 
    15. MOBILE
-======================================== */
+   
 
 @media screen and (max-width: 749px) {
   .dev-ys-header .header__menu-item span {
