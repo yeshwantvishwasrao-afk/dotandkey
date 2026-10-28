@@ -1,6 +1,6 @@
 
 
-.card-information > .dev-ys-pc-offer {
+.dev-ys-card-information > .dev-ys-pc-offer {
   display: inline-block;
   margin-top: 6px !important;
   margin-bottom: 10px;
@@ -14,7 +14,7 @@
 }
 
 
-.card-information > .dev-ys-sizes {
+.dev-ys-card-information > .dev-ys-sizes {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -35,7 +35,7 @@
   color: #ff3d85;
 }
 
-.card-information > .dev-ys-price-row {
+.dev-ys-card-information > .dev-ys-price-row {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
