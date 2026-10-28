@@ -216,6 +216,18 @@
     "collection_list_qfFz7X": {
       "type": "collection-list",
       "blocks": {
+        "featured_collection_p3jeHC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "generic-surfboards"
+          }
+        },
+        "featured_collection_jETH4B": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "hydrogen"
+          }
+        },
         "featured_collection_fN7LpX": {
           "type": "featured_collection",
           "settings": {
@@ -242,6 +254,8 @@
         }
       },
       "block_order": [
+        "featured_collection_p3jeHC",
+        "featured_collection_jETH4B",
         "featured_collection_fN7LpX",
         "featured_collection_HqHN4h",
         "featured_collection_EKerVx",
