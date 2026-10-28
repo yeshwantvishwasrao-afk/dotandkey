@@ -1,25 +1,72 @@
-/* ===== Offer pill ===== */
- .dev-ys-pc-offer {
-  display: inline-block;
-  margin-top: 6px !important;
-  margin-bottom: 10px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: #ffe6ef;
-  color: #ff3d85;
-  font-size: 1.3rem;
-  font-weight: 500;
+/* =========================================================
+   dev-component-card.css
+   Every rule is scoped under the parent class
+   .dev-ys-product-card (set in snippets/card-product.liquid)
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. CARD LAYOUT (equal height, button pinned to bottom)
+   --------------------------------------------------------- */
+.dev-ys-product-card,
+.dev-ys-product-card .card {
+  height: 100%;
+}
+
+.dev-ys-product-card .card {
+  display: flex;
+  flex-direction: column;
+}
+
+.dev-ys-product-card .card > .card__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0;
+}
+
+.dev-ys-product-card .card__information {
+  flex: 1;
+  padding: 12px 0;
+  min-width: 0;
+}
+
+
+/* ---------------------------------------------------------
+   2. TITLE AND VENDOR
+   --------------------------------------------------------- */
+.dev-ys-product-card .card__heading,
+.dev-ys-product-card .card__heading a {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0;
+  color: #1f2340;
+  text-transform: none;
+}
+
+.dev-ys-product-card .card-information,
+.dev-ys-product-card .card-information * {
   letter-spacing: 0;
 }
 
-/* ===== Size pills ===== */
-    .dev-ys-sizes {
+.dev-ys-product-card .caption-with-letter-spacing {
+  font-size: 1.1rem;
+  color: #777;
+}
+
+
+/* ---------------------------------------------------------
+   3. SIZE PILLS (metafield: custom.sizes)
+   --------------------------------------------------------- */
+.dev-ys-product-card .card-information > .dev-ys-sizes {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 12px !important;
 }
-.dev-ys-size {
+
+.dev-ys-product-card .dev-ys-size {
   padding: 6px 14px;
   border: 1px solid #333;
   border-radius: 4px;
@@ -29,27 +76,56 @@
   color: #222;
   background: #fff;
 }
-.dev-ys-size.is-active {
+
+.dev-ys-product-card .dev-ys-size.is-active {
   border-color: #ff3d85;
   color: #ff3d85;
 }
 
-/* ===== Price + discount row ===== */
-    .dev-ys-price-row {
+
+/* ---------------------------------------------------------
+   4. OFFER PILL (metafield: custom.offer_title)
+   --------------------------------------------------------- */
+.dev-ys-product-card .card-information > .dev-ys-pc-offer {
+  display: inline-block;
+  margin-top: 8px !important;
+  margin-bottom: 4px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #ffe6ef;
+  color: #ff3d85;
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+
+/* ---------------------------------------------------------
+   5. PRICE + DISCOUNT ROW
+   --------------------------------------------------------- */
+.dev-ys-product-card .card-information > .dev-ys-price-row {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 4px 8px;
   margin-top: 8px !important;
 }
-.dev-ys-price-row .price { width: auto; }
 
-/* Normal products: only the regular price */
-.dev-ys-price-row .price:not(.price--on-sale) .price__sale { display: none; }
+.dev-ys-product-card .dev-ys-price-row .price {
+  width: auto;
+}
 
-/* Sale products: sale price first, then struck MRP */
-.dev-ys-price-row .price--on-sale .price__regular { display: none; }
-.dev-ys-price-row .price--on-sale .price__sale {
+/* Normal products: show only the regular price */
+.dev-ys-product-card .dev-ys-price-row .price:not(.price--on-sale) .price__sale {
+  display: none;
+}
+
+/* Sale products: sale price first, then struck-out MRP */
+.dev-ys-product-card .dev-ys-price-row .price--on-sale .price__regular {
+  display: none;
+}
+
+.dev-ys-product-card .dev-ys-price-row .price--on-sale .price__sale {
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: nowrap;
@@ -57,20 +133,25 @@
   gap: 8px;
 }
 
-.dev-ys-price-row .price-item { white-space: nowrap; letter-spacing: 0; }
-.dev-ys-price-row .price-item--sale,
-.dev-ys-price-row .price__regular .price-item--regular {
+.dev-ys-product-card .dev-ys-price-row .price-item {
+  white-space: nowrap;
+  letter-spacing: 0;
+}
+
+.dev-ys-product-card .dev-ys-price-row .price-item--sale,
+.dev-ys-product-card .dev-ys-price-row .price__regular .price-item--regular {
   font-size: 2rem;
   font-weight: 700;
   color: #111;
 }
-.dev-ys-price-row .price--on-sale .price-item--regular {
+
+.dev-ys-product-card .dev-ys-price-row .price--on-sale .price-item--regular {
   font-size: 1.5rem;
   font-weight: 400;
   color: #888;
 }
 
-.dev-ys-discount {
+.dev-ys-product-card .dev-ys-discount {
   white-space: nowrap;
   font-size: 1.5rem;
   font-weight: 500;
@@ -78,6 +159,53 @@
 }
 
 
+/* ---------------------------------------------------------
+   6. ADD TO CART / CHOOSE OPTIONS BUTTON (pink)
+   --------------------------------------------------------- */
+.dev-ys-product-card .quick-add {
+  width: 100%;
+  margin: 12px 0 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dev-ys-product-card .quick-add__submit.button {
+  --color-button: 255, 61, 133;
+  --color-button-text: 255, 255, 255;
+  background: #ff3d85;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  min-width: 0;
+  min-height: 46px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.dev-ys-product-card .quick-add__submit.button::before,
+.dev-ys-product-card .quick-add__submit.button::after {
+  box-shadow: none !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.dev-ys-product-card .quick-add__submit.button:hover {
+  background: #e62f73;
+  color: #fff;
+}
+
+.dev-ys-product-card .quick-add__submit.button:disabled,
+.dev-ys-product-card .quick-add__submit.button[disabled] {
+  background: #f3b6cd;
+  color: #fff;
+  opacity: 1;
+  cursor: not-allowed;
+}
 
 
 
