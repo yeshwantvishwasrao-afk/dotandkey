@@ -16,6 +16,17 @@
 
    2. HEADER AND NAVIGATION
 
+.dev-ys-header.header__heading-logo{
+  align-items: center;
+  width:120px;
+
+
+}
+
+
+
+
+
 
 .dev-ys-header .header__menu-item span {
   font-size: 20px;
