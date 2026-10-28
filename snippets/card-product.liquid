@@ -207,7 +207,7 @@
                   </span>
                 </p>
               {%- endif -%}
-              
+
 {% assign variant = card_product.selected_or_first_available_variant %}
 {% assign sizes = card_product.metafields.custom.sizes.value %}
 {% assign offer_title = card_product.metafields.custom.offer_title.value %}
@@ -221,7 +221,7 @@
 {% endif %}
 
 {% if offer_title != blank %}
-  <div class="pc-offer">{{ offer_title | escape }}</div>
+  <div class="dev-ys-pc-offer">{{ offer_title | escape }}</div>
 {% endif %}
 
 <div class="price-discount-row">
