@@ -76,7 +76,8 @@
   letter-spacing: 0;
 }
 
-/* ===== Size pills ===== */
+
+
 .pc-sizes {
   display: flex;
   flex-wrap: wrap;
@@ -98,7 +99,7 @@
   color: #ff3d85;
 }
 
-/* ===== Offer pill ===== */
+Offer pill 
 .pc-offer {
   display: inline-block;
   margin: 6px 0 10px;
@@ -111,7 +112,6 @@
   letter-spacing: 0;
 }
 
-/* ===== Price + discount row ===== */
 .price-discount-row {
   display: flex;
   align-items: baseline;
@@ -152,7 +152,6 @@
   color: #ff3d85;
 }
 
-/* ===== Equal-height cards, button pinned to the bottom ===== */
 .dev-product-slider__slide .card-wrapper,
 .dev-product-slider__slide .card {
   height: 100%;
