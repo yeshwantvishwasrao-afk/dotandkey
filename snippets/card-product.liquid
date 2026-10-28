@@ -207,12 +207,22 @@
                   </span>
                 </p>
               {%- endif -%}
+              
+{% assign variant = card_product.selected_or_first_available_variant %}
+{% assign sizes = card_product.metafields.custom.sizes.value %}
+{% assign offer_title = card_product.metafields.custom.offer_title.value %}
 
+{% if sizes.size > 0 %}
+  <div class="pc-sizes">
+    {% for size in sizes %}
+      <span class="pc-size{% if forloop.first %} is-active{% endif %}">{{ size | escape }}</span>
+    {% endfor %}
+  </div>
+{% endif %}
 
-
-    
-
-              {% assign variant = card_product.selected_or_first_available_variant %}
+{% if offer_title != blank %}
+  <div class="pc-offer">{{ offer_title | escape }}</div>
+{% endif %}
 
 <div class="price-discount-row">
   {% render 'price',
@@ -228,29 +238,15 @@
       | divided_by: variant.compare_at_price
       | round
     %}
-
-    <span class="pdp-discount">
-      {{ discount }}% OFF
-    </span>
+    <span class="pdp-discount">({{ discount }}% OFF)</span>
   {% endif %}
 </div>
 
-{% assign length = card_product.metafields.custom.snowboard_length %}
-{% assign material = card_product.metafields.custom.material %}
 
-<div class="pdp-details">
-  {% if length != blank %}
-    <p class="pdp-detail">
-      <strong>Snowboard Length:</strong> {{ length.value }}
-    </p>
-  {% endif %}
+    
 
-  {% if material != blank %}
-    <p class="pdp-detail">
-      <strong>Material:</strong> {{ material.value }}
-    </p>
-  {% endif %}
-</div>
+
+    
               {%- if card_product.quantity_price_breaks_configured -%}
 
                 {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
