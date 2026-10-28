@@ -61,7 +61,7 @@
    --------------------------------------------------------- */
 .dev-ys-product-card .card-information > .dev-ys-sizes {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: no-wrap;
   gap: 8px;
   margin-top: 12px !important;
 }
