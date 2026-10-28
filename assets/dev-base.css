@@ -51,9 +51,13 @@
  
    3. HEADER ICONS
    
-.dev-ys-header__icons{
-  
+.dev-ys-header__icons .dev-ys-cart-icon svg,
+.header__icons .dev-ys-account-icon svg {
+  width: 28px;
+  min-height: 28px;
 }
+
+
 
  
    4. COLLECTION HEADING
