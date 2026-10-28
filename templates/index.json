@@ -263,9 +263,9 @@
       ],
       "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "title": "Collections",
+        "title": "Explore Our Range",
         "heading_size": "h1",
-        "image_ratio": "square",
+        "image_ratio": "adapt",
         "columns_desktop": 3,
         "color_scheme": "scheme-2",
         "show_view_all": false,
