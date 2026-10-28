@@ -22,7 +22,6 @@
 
 
 }
-.dev.ys-
 
 
 
@@ -36,15 +35,15 @@
   justify-content: center;
 }
 
-.header__menu-item:hover {
+.dev-ys-header__menu-item:hover {
   color: #ff40b1;
 }
 
-.header__menu-item:hover span {
+.dev-ys-header__menu-item:hover span {
   text-decoration: none;
 }
 
-.header__inline-menu {
+.dev-ys-header__inline-menu {
   display: flex;
   justify-content: space-evenly;
 }
@@ -52,13 +51,8 @@
  
    3. HEADER ICONS
    
-
-.header__icons .dev-ys-cart-icon svg,
-.header__icons .dev-ys-account-icon svg {
-  width: 24px;
-  min-height: 23px;
-  gap:12px;
-
+.dev-ys-header__icons{
+  
 }
 
  
