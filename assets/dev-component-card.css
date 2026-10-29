@@ -209,7 +209,20 @@
 
 
 
-
+.dev-ys-center collection__view-all{
+   background: #fff;
+  color: #ff3880;
+  border: 1px solid #ff3880;
+  border-radius: 12px;
+  min-height: 64px;
+  font-size: 22px;
+  font-weight: 600;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.dev-ys-center collection__view-all.button:hover{
+   background: #ff3880;
+  color: #fff;
+}
 
 
 
