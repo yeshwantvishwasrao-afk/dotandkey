@@ -750,41 +750,113 @@ header.dev-ys-header > nav .icon-caret {
 
 
 
-/* Collection slider: let the container follow the image */
+/* ==========================================
+   Collection Image Slider - Adaptive Height
+========================================== */
+
+.cis {
+  display: block;
+  width: 100%;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+.cis .cis__container {
+  height: auto !important;
+  min-height: 0 !important;
+}
 
 .cis .cis__slider {
   position: relative;
-  height: auto !important;
-  min-height: 0 !important;
+  width: 100%;
+  height: auto;
+  min-height: 0;
 }
 
 .cis .cis__track {
   display: flex;
   align-items: flex-start;
+  width: 100%;
   height: auto;
   min-height: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cis .cis__track::-webkit-scrollbar {
+  display: none;
 }
 
 .cis .cis__slide {
   flex: 0 0 100%;
   align-self: flex-start;
+  width: 100%;
   height: auto !important;
   min-height: 0 !important;
+  scroll-snap-align: start;
 }
 
-.cis .cis__picture,
-.cis .cis__link {
+.cis .cis__link,
+.cis .cis__picture {
   display: block;
+  width: 100%;
   height: auto !important;
   min-height: 0 !important;
   aspect-ratio: auto !important;
+  line-height: 0;
 }
 
-.cis .cis__image {
-  display: block;
+.cis img.cis__image {
   position: static !important;
+  display: block;
   width: 100% !important;
+  max-width: 100%;
   height: auto !important;
   min-height: 0 !important;
+  aspect-ratio: auto !important;
   object-fit: contain !important;
+}
+
+/* Navigation arrows */
+.cis .cis__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+}
+
+.cis .cis__arrow--prev {
+  left: 14px;
+}
+
+.cis .cis__arrow--next {
+  right: 14px;
+}
+
+/* Pagination dots */
+.cis .cis__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.cis .cis__dot {
+  flex: 0 0 auto;
+}
+
+/* Mobile */
+@media screen and (max-width: 749px) {
+  .cis .cis__arrow--prev {
+    left: 8px;
+  }
+
+  .cis .cis__arrow--next {
+    right: 8px;
+  }
 }
