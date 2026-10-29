@@ -9,61 +9,6 @@
  */
 {
   "sections": {
-    "slideshow_mCK9Jp": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_N6UeeV": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Tropical_Surf_Summer_Promotion_Banner_0360b12c-480e-44ce-9104-e61d3b1b52f4.png",
-            "image_overlay_opacity": 0,
-            "heading": "Image slide",
-            "heading_size": "h1",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Button label",
-            "link": "shopify://collections/all-product",
-            "button_style_secondary": false,
-            "show_text_box": true,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": "scheme-2"
-          }
-        },
-        "slide_QtXBnR": {
-          "type": "slide",
-          "settings": {
-            "image_overlay_opacity": 0,
-            "heading": "Image slide",
-            "heading_size": "h1",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Button label",
-            "link": "",
-            "button_style_secondary": false,
-            "show_text_box": true,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_N6UeeV",
-        "slide_QtXBnR"
-      ],
-      "name": "t:sections.slideshow.presets.name",
-      "settings": {
-        "layout": "full_bleed",
-        "slide_height": "adapt_image",
-        "slider_visual": "dots",
-        "auto_rotate": false,
-        "change_slides_speed": 3,
-        "image_behavior": "none",
-        "show_text_below": false,
-        "accessibility_info": "Slideshow about our brand"
-      }
-    },
     "slideshow_gGfLxn": {
       "type": "slideshow",
       "blocks": {
@@ -388,7 +333,6 @@
     }
   },
   "order": [
-    "slideshow_mCK9Jp",
     "slideshow_gGfLxn",
     "featured_collection_4UYW6G",
     "slideshow_fLcP4t",
