@@ -29,8 +29,10 @@
   header.dev-ys-header > .dev-ys-header__heading,
   header.dev-ys-header > .header__heading-link {
     grid-area: heading;
-    justify-self: start;
-    margin: 0;
+  grid-row: 1;
+  justify-self: start;
+  align-self: center;
+  margin: 0;
   }
 
   header.dev-ys-header > .header__search {
