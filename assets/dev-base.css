@@ -712,3 +712,37 @@ header.dev-ys-header > nav .icon-caret {
 
 
 
+/* ===== DEV-YS VIEW ALL BUTTON ===== */
+
+.dev-ys-view-all {
+  max-width: 312px;
+  margin: 24px auto;
+}
+
+.dev-ys-view-all .button {
+  width: 100%;
+  min-height: 64px;
+  padding: 12px 24px;
+
+  background: #fff;
+  color: #ff3880;
+  border: 1px solid #ff3880;
+  border-radius: 12px;
+
+  font-size: 22px;
+  font-weight: 600;
+
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Pink background on hover */
+.dev-ys-view-all .button:hover {
+  background: #ff3880;
+  color: #fff;
+}
+
+/* Remove Dawn's default hover shadow */
+.dev-ys-view-all .button::after {
+  box-shadow: none;
+}
+
