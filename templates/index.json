@@ -9,18 +9,18 @@
  */
 {
   "sections": {
-    "banner_slider_7kx6WM": {
+    "banner_slider_nx3YTy": {
       "type": "banner-slider",
       "blocks": {
-        "slide_XWkmCD": {
+        "slide_NEAtAt": {
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/Screenshot_2026-10-29_173217.png",
-            "mobile_image": "shopify://shop_images/Screenshot_2026-10-29_173217.png",
+            "mobile_image": "shopify://shop_images/Tropical_Surf_Summer_Promotion_Banner.png",
             "collection": "all-product"
           }
         },
-        "slide_4Ahr6R": {
+        "slide_Tg8mqH": {
           "type": "slide",
           "settings": {
             "collection": ""
@@ -28,8 +28,8 @@
         }
       },
       "block_order": [
-        "slide_XWkmCD",
-        "slide_4Ahr6R"
+        "slide_NEAtAt",
+        "slide_Tg8mqH"
       ],
       "name": "Collection image slider",
       "settings": {
@@ -41,8 +41,8 @@
         "arrow_color": "#222222",
         "dot_color": "#bdbdbd",
         "active_dot_color": "#e84d8a",
-        "margin_top": 20,
-        "margin_bottom": 20
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
     "slideshow_gGfLxn": {
@@ -369,7 +369,7 @@
     }
   },
   "order": [
-    "banner_slider_7kx6WM",
+    "banner_slider_nx3YTy",
     "slideshow_gGfLxn",
     "featured_collection_4UYW6G",
     "slideshow_fLcP4t",
