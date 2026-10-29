@@ -14,15 +14,48 @@
 }
 
 
-   2. HEADER AND NAVIGATION
+  /* ===== 2. HEADER AND NAVIGATION ===== */
+@media screen and (min-width: 990px) {
+  .dev-ys-header.header,
+  .dev-ys-header .header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "heading navigation icons";
+    align-items: center;
+    column-gap: 4rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+  }
 
-.dev-ys-header.
+  .dev-ys-header .header__heading {
+    grid-area: heading;
+    margin: 0;
+  }
 
+  .dev-ys-header .header__inline-menu {
+    grid-area: navigation;
+    justify-self: start;
+    margin: 0;
+  }
+
+  .dev-ys-header .header__inline-menu .list-menu--inline {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+  }
+
+  .dev-ys-header .header__icons {
+    grid-area: icons;
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    gap: 1.6rem;
+  }
 }
 
-
-
-
+.dev-ys-header .header__menu-item {
+  padding: 0.8rem 0;
+}
 
 .dev-ys-header .header__menu-item span {
   font-size: 20px;
@@ -32,29 +65,26 @@
   justify-content: center;
 }
 
-.dev-ys-header__menu-item:hover {
+.dev-ys-header .header__menu-item:hover,
+.dev-ys-header .header__menu-item:hover span {
   color: #ff40b1;
-}
-
-.dev-ys-header__menu-item:hover span {
   text-decoration: none;
 }
 
-.dev-ys-header__inline-menu {
+/* ===== 3. HEADER ICONS ===== */
+.dev-ys-header .header__icons .header__icon,
+.dev-ys-header .header__icons .dev-ys-cart-icon,
+.dev-ys-header .header__icons .dev-ys-account-icon {
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: center;
 }
 
- 
-   3. HEADER ICONS
-   
-.dev-ys-header__icons .dev-ys-cart-icon svg,
-.header__icons .dev-ys-account-icon svg {
+.dev-ys-header .header__icons .dev-ys-cart-icon svg,
+.dev-ys-header .header__icons .dev-ys-account-icon svg {
   width: 28px;
-  min-height: 28px;
+  height: 28px;
 }
-
-
 
  
    4. COLLECTION HEADING
