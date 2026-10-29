@@ -1,0 +1,540 @@
+
+{% comment %}
+  Collection Image Slider
+  - Images adapt to their natural aspect ratio.
+  - Each slide can link to a selected collection.
+  - Optional pagination dots and navigation arrows.
+  - Supports separate desktop and mobile images.
+{% endcomment %}
+
+{%- liquid
+  assign slider_id = 'CollectionImageSlider-' | append: section.id
+-%}
+
+<collection-image-slider
+  id="{{ slider_id }}"
+  class="cis"
+  data-show-dots="{{ section.settings.show_dots }}"
+  data-show-arrows="{{ section.settings.show_arrows }}"
+>
+  <div class="cis__container page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="cis__heading">
+        {{ section.settings.heading | escape }}
+      </h2>
+    {% endif %}
+
+    <div class="cis__slider">
+      {% if section.settings.show_arrows and section.blocks.size > 1 %}
+        <button
+          type="button"
+          class="cis__arrow cis__arrow--prev"
+          aria-label="Previous slide"
+          data-cis-prev
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+      {% endif %}
+
+      <div class="cis__track" data-cis-track>
+        {% for block in section.blocks %}
+          {% liquid
+            assign slide_image = block.settings.image
+            assign mobile_image = block.settings.mobile_image
+            assign slide_collection = block.settings.collection
+          %}
+
+          <div
+            class="cis__slide"
+            data-cis-slide
+            {{ block.shopify_attributes }}
+          >
+            {% if slide_collection != blank %}
+              <a
+                class="cis__link"
+                href="{{ slide_collection.url }}"
+                aria-label="Explore {{ slide_collection.title | escape }}"
+              >
+            {% else %}
+              <div class="cis__link">
+            {% endif %}
+
+              {% if slide_image != blank %}
+                <picture class="cis__picture">
+                  {% if mobile_image != blank %}
+                    <source
+                      media="(max-width: 749px)"
+                      srcset="
+                        {{ mobile_image | image_url: width: 375 }} 375w,
+                        {{ mobile_image | image_url: width: 550 }} 550w,
+                        {{ mobile_image | image_url: width: 750 }} 750w
+                      "
+                      sizes="100vw"
+                    >
+                  {% endif %}
+
+                  {{
+                    slide_image
+                    | image_url: width: 2400
+                    | image_tag:
+                      widths: '375, 550, 750, 1100, 1500, 2000, 2400',
+                      sizes: '100vw',
+                      loading: 'lazy',
+                      class: 'cis__image'
+                  }}
+                </picture>
+              {% else %}
+                <div class="cis__placeholder">
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  <p>Add an image to this slide</p>
+                </div>
+              {% endif %}
+
+            {% if slide_collection != blank %}
+              </a>
+            {% else %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if section.settings.show_arrows and section.blocks.size > 1 %}
+        <button
+          type="button"
+          class="cis__arrow cis__arrow--next"
+          aria-label="Next slide"
+          data-cis-next
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_dots and section.blocks.size > 1 %}
+      <div class="cis__dots" data-cis-dots aria-label="Choose a slide">
+        {% for block in section.blocks %}
+          <button
+            type="button"
+            class="cis__dot{% if forloop.first %} is-active{% endif %}"
+            aria-label="Go to slide {{ forloop.index }}"
+            aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+            data-cis-dot="{{ forloop.index0 }}"
+          ></button>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</collection-image-slider>
+
+<style>
+  #{{ slider_id }} {
+    display: block;
+    width: 100%;
+    margin-block: {{ section.settings.margin_top }}px {{ section.settings.margin_bottom }}px;
+  }
+
+  #{{ slider_id }} .cis__heading {
+    margin: 0 0 20px;
+    text-align: {{ section.settings.heading_alignment }};
+  }
+
+  #{{ slider_id }} .cis__slider {
+    position: relative;
+    width: 100%;
+  }
+
+  #{{ slider_id }} .cis__track {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #{{ slider_id }} .cis__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  #{{ slider_id }} .cis__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  #{{ slider_id }} .cis__link {
+    display: block;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /*
+    Adaptive images:
+    No fixed height or forced aspect ratio.
+    Each image keeps its natural dimensions.
+  */
+  #{{ slider_id }} .cis__picture {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  #{{ slider_id }} .cis__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  #{{ slider_id }} .cis__placeholder {
+    width: 100%;
+    text-align: center;
+    background: #f7f7f7;
+  }
+
+  #{{ slider_id }} .cis__placeholder svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  #{{ slider_id }} .cis__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    transform: translateY(-50%);
+    border: 0;
+    border-radius: 50%;
+    background: {{ section.settings.arrow_background }};
+    color: {{ section.settings.arrow_color }};
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+  }
+
+  #{{ slider_id }} .cis__arrow--prev {
+    left: 14px;
+  }
+
+  #{{ slider_id }} .cis__arrow--next {
+    right: 14px;
+  }
+
+  #{{ slider_id }} .cis__arrow svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  #{{ slider_id }} .cis__dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 14px;
+  }
+
+  #{{ slider_id }} .cis__dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: {{ section.settings.dot_color }};
+    opacity: 0.45;
+    cursor: pointer;
+  }
+
+  #{{ slider_id }} .cis__dot.is-active {
+    opacity: 1;
+    background: {{ section.settings.active_dot_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    #{{ slider_id }} .cis__heading {
+      margin-bottom: 14px;
+    }
+
+    #{{ slider_id }} .cis__arrow {
+      width: 34px;
+      height: 34px;
+    }
+
+    #{{ slider_id }} .cis__arrow--prev {
+      left: 8px;
+    }
+
+    #{{ slider_id }} .cis__arrow--next {
+      right: 8px;
+    }
+
+    #{{ slider_id }} .cis__arrow svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    #{{ slider_id }} .cis__dots {
+      margin-top: 10px;
+    }
+  }
+</style>
+
+<script>
+  if (!customElements.get('collection-image-slider')) {
+    class CollectionImageSlider extends HTMLElement {
+      connectedCallback() {
+        if (this.initialized) return;
+        this.initialized = true;
+
+        this.track = this.querySelector('[data-cis-track]');
+        this.slides = Array.from(
+          this.querySelectorAll('[data-cis-slide]')
+        );
+        this.dots = Array.from(
+          this.querySelectorAll('[data-cis-dot]')
+        );
+        this.prevButton = this.querySelector('[data-cis-prev]');
+        this.nextButton = this.querySelector('[data-cis-next]');
+
+        if (!this.track || this.slides.length === 0) return;
+
+        this.currentIndex = 0;
+        this.scrollTimeout = null;
+
+        if (this.prevButton) {
+          this.prevButton.addEventListener('click', () => {
+            this.goToSlide(this.currentIndex - 1);
+          });
+        }
+
+        if (this.nextButton) {
+          this.nextButton.addEventListener('click', () => {
+            this.goToSlide(this.currentIndex + 1);
+          });
+        }
+
+        this.dots.forEach((dot) => {
+          dot.addEventListener('click', () => {
+            this.goToSlide(Number(dot.dataset.cisDot));
+          });
+        });
+
+        this.track.addEventListener('scroll', () => {
+          window.clearTimeout(this.scrollTimeout);
+
+          this.scrollTimeout = window.setTimeout(() => {
+            this.updateCurrentSlide();
+          }, 80);
+        });
+
+        window.addEventListener('resize', () => {
+          this.goToSlide(this.currentIndex, false);
+        });
+      }
+
+      goToSlide(index, smooth = true) {
+        if (!this.slides.length) return;
+
+        if (index < 0) {
+          index = this.slides.length - 1;
+        }
+
+        if (index >= this.slides.length) {
+          index = 0;
+        }
+
+        this.currentIndex = index;
+
+        const slide = this.slides[index];
+
+        this.track.scrollTo({
+          left: slide.offsetLeft - this.track.offsetLeft,
+          behavior: smooth ? 'smooth' : 'auto'
+        });
+
+        this.updateDots();
+      }
+
+      updateCurrentSlide() {
+        const trackRect = this.track.getBoundingClientRect();
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        this.slides.forEach((slide, index) => {
+          const slideRect = slide.getBoundingClientRect();
+          const distance = Math.abs(slideRect.left - trackRect.left);
+
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+
+        this.currentIndex = closestIndex;
+        this.updateDots();
+      }
+
+      updateDots() {
+        this.dots.forEach((dot, index) => {
+          const isActive = index === this.currentIndex;
+
+          dot.classList.toggle('is-active', isActive);
+          dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+        });
+      }
+    }
+
+    customElements.define(
+      'collection-image-slider',
+      CollectionImageSlider
+    );
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Collection image slider",
+  "tag": "section",
+  "class": "section-collection-image-slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Explore our collections"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Show pagination dots",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Show navigation arrows",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "arrow_background",
+      "label": "Arrow background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow color",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "dot_color",
+      "label": "Inactive dot color",
+      "default": "#bdbdbd"
+    },
+    {
+      "type": "color",
+      "id": "active_dot_color",
+      "label": "Active dot color",
+      "default": "#e84d8a"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Image slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Desktop image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image (optional)"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Link to collection"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Collection image slider",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
