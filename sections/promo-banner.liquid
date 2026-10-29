@@ -1,0 +1,128 @@
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+{{ 'dev-tabs-slider.css' | asset_url | stylesheet_tag }}
+
+<div id="dev-ys-banner-{{ section.id }}" class="dev-ys-banner">
+  <div class="dev-ys-banner__slider">
+    {% for block in section.blocks %}
+      <div {{ block.shopify_attributes }}>
+        {% if block.settings.collection != blank %}
+          <a href="{{ block.settings.collection.url }}" class="dev-ys-banner__link">
+        {% endif %}
+
+        {% if block.settings.image != blank %}
+          {{ block.settings.image
+            | image_url: width: 2400
+            | image_tag: class: 'dev-ys-banner__image'
+          }}
+        {% endif %}
+
+        {% if block.settings.collection != blank %}
+          <span class="dev-ys-banner__arrow">›</span>
+          </a>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .dev-ys-banner { width: 100%; }
+  .dev-ys-banner__link { display: block; position: relative; }
+  .dev-ys-banner__image { display: block; width: 100%; height: auto; }
+  .dev-ys-banner__arrow {
+    position: absolute;
+    right: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    border: 2px solid #ff3880;
+    border-radius: 50%;
+    background: white;
+    color: #ff3880;
+    font-size: 36px;
+  }
+  .dev-ys-banner .slick-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+  }
+  .dev-ys-banner .slick-dots button {
+    font-size: 0;
+    width: 9px;
+    height: 9px;
+    border: 0;
+    border-radius: 50%;
+    background: #ccc;
+  }
+  .dev-ys-banner .slick-dots .slick-active button {
+    background: #ff3880;
+  }
+</style>
+
+<script>
+  (function () {
+    function initBanner() {
+      var slider = window.jQuery &&
+        jQuery('#dev-ys-banner-{{ section.id }} .dev-ys-banner__slider');
+
+      if (!slider || !jQuery.fn.slick || slider.hasClass('slick-initialized')) return;
+
+      slider.slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: true,
+        adaptiveHeight: false
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initBanner);
+    initBanner();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Dev YS Promo Banner",
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Banner image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Banner label"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Link to collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dev YS Promo Banner",
+      "blocks": [
+        { "type": "banner" },
+        { "type": "banner" }
+      ]
+    }
+  ]
+}
+{% endschema %}
