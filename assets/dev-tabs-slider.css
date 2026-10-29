@@ -11,6 +11,7 @@
   display: flex;
   gap: 14px;
   overflow-x: auto;
+  font-size: 25px;
   scrollbar-width: none;
   padding: 4px;
 }
