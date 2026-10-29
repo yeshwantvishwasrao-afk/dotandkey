@@ -127,7 +127,7 @@ header.dev-ys-header > nav a,
 header.dev-ys-header > nav summary,
 header.dev-ys-header > nav .list-menu__item,
 header.dev-ys-header > nav .list-menu__item span {
-  font-size: 18px !important;
+  font-size: 25px !important;
   font-weight: 600 !important;
   letter-spacing: 0.06em;
   text-transform: uppercase;
