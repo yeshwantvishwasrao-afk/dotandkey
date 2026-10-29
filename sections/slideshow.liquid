@@ -202,7 +202,7 @@
     <div class="slideshow__controls slider-buttons{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
       <button
         type="button"
-        class="slider-button slider-button--prev"
+        class="slider-button slider-button--prev hidden"
         name="previous"
         aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}"
         aria-controls="Slider-{{ section.id }}"
@@ -229,7 +229,7 @@
                 {%- if section.settings.slider_visual == 'numbers' -%}
                   {{ forloop.index -}}
                 {%- else -%}
-                  <span class="dot"></span>
+                  <span class="dot hidden"></span>
                 {%- endif -%}
               </button>
             {%- endfor -%}
