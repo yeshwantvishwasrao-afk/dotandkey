@@ -223,7 +223,9 @@
    background: #ff3880;
   color: #fff;
 }
-
+.dev-ys-center  collection__view-all .button::after {
+  box-shadow: none;
+}
 
 
 
