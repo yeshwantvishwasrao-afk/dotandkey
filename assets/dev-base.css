@@ -721,7 +721,7 @@ header.dev-ys-header > nav .icon-caret {
 
 .dev-ys-view-all .button {
   width: 100%;
-  min-height: 64px;
+  min-height: 25px;
   padding: 12px 24px;
 
   background: #fff;
