@@ -66,3 +66,30 @@
   }
   document.addEventListener('shopify:section:load', init);
 })();
+
+
+
+
+(function () {
+  function initBanner() {
+    var slider = window.jQuery &&
+      jQuery('#dev-ys-banner-{{ section.id }} .dev-ys-banner__slider');
+
+    if (!slider || !jQuery.fn.slick ||
+        slider.hasClass('slick-initialized')) return;
+
+    slider.slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      dots: true,
+      adaptiveHeight: false
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBanner);
+  } else {
+    initBanner();
+  }
+})();
