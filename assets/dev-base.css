@@ -633,3 +633,38 @@
   .dev-ys-collection-list .collection-list { padding: 0 16px; }
   .dev-ys-collection-list .collection-list-title { font-size: 2.8rem; }
 }
+
+
+
+
+@media screen and (min-width: 990px) {
+  .section-header header.header {
+    display: grid !important;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "heading navigation icons" !important;
+    align-items: center;
+    column-gap: 4rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .section-header .header__heading,
+  .section-header .header__heading-link {
+    grid-area: heading;
+    margin: 0;
+  }
+
+  .section-header .header__inline-menu {
+    grid-area: navigation;
+    justify-self: start;
+    margin: 0;
+  }
+
+  .section-header .header__icons {
+    grid-area: icons;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+}
