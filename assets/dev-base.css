@@ -749,35 +749,228 @@ header.dev-ys-header > nav .icon-caret {
 
 
 
-/* DEV-YS: Short promotional collection banner */
 
-.dev-ys-slider-mobile-gutter .dev-ys-slideshow__media {
-  height: 160px !important;
-  padding-bottom: 0 !important;
-  overflow: hidden;
-}
+/* =========================================
+   Collection Image Slider
+   Adaptive image height and responsive layout
+========================================= */
 
-.dev-ys-slider-mobile-gutter .slideshow__slide {
-  height: 160px !important;
-}
-
-.dev-ys-slider-mobile-gutter .dev-ys-slideshow__collection-link {
+.cis {
   display: block;
   width: 100%;
-  height: 100%;
-  line-height: 0;
+  margin: 20px 0;
 }
 
-.dev-ys-slider-mobile-gutter .dev-ys-slideshow__image {
+.cis__container {
+  width: 100%;
+}
+
+.cis__heading {
+  margin: 0 0 20px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Slider wrapper */
+.cis__slider {
+  position: relative;
+  width: 100%;
+}
+
+/* Horizontal slider track */
+.cis__track {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cis__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Each slide */
+.cis__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+/* Collection link or image wrapper */
+.cis__link {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  color: inherit;
+  text-decoration: none;
 }
+
+/* Adaptive image container */
+.cis__picture {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Images retain their original proportions */
+.cis__image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Empty image placeholder */
+.cis__placeholder {
+  width: 100%;
+  text-align: center;
+  background: #f7f7f7;
+}
+
+.cis__placeholder svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* =========================================
+   Previous and Next Arrows
+========================================= */
+
+.cis__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  transform: translateY(-50%);
+  border: none;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #222222;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cis__arrow:hover {
+  background: #e84d8a;
+  color: #ffffff;
+}
+
+.cis__arrow--prev {
+  left: 14px;
+}
+
+.cis__arrow--next {
+  right: 14px;
+}
+
+.cis__arrow svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* =========================================
+   Pagination Dots
+========================================= */
+
+.cis__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.cis__dot {
+  display: block;
+  width: 9px;
+  height: 9px;
+  min-width: 9px;
+  min-height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #bdbdbd;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.cis__dot.is-active {
+  background: #e84d8a;
+  opacity: 1;
+}
+
+/* =========================================
+   Mobile Responsive
+========================================= */
 
 @media screen and (max-width: 749px) {
-  .dev-ys-slider-mobile-gutter .dev-ys-slideshow__media,
-  .dev-ys-slider-mobile-gutter .slideshow__slide {
-    height: 100px !important;
+  .cis {
+    margin: 14px 0;
+  }
+
+  .cis__heading {
+    margin-bottom: 14px;
+    font-size: 22px;
+  }
+
+  .cis__arrow {
+    width: 34px;
+    height: 34px;
+  }
+
+  .cis__arrow--prev {
+    left: 8px;
+  }
+
+  .cis__arrow--next {
+    right: 8px;
+  }
+
+  .cis__arrow svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .cis__dots {
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .cis__dot {
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    min-height: 8px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .cis__track {
+    scroll-behavior: auto;
+  }
+
+  .cis__arrow,
+  .cis__dot {
+    transition: none;
   }
 }
