@@ -778,3 +778,18 @@ header.dev-ys-header > nav .icon-caret {
   height: 100%;
   object-fit: cover;
 }
+
+
+.dev-ys-slideshow__collection-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.dev-ys-slideshow__collection-link img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
