@@ -13,11 +13,11 @@
   text-decoration: none;
 }
 
+/* ===== 2. HEADER AND NAVIGATION ===== */
 
-  /* ===== 2. HEADER AND NAVIGATION ===== */
+/* Desktop: one row -> logo | nav | icons */
 @media screen and (min-width: 990px) {
-  .dev-ys-header.header,
-  .dev-ys-header .header {
+  header.dev-ys-header {
     display: grid;
     grid-template-columns: auto 1fr auto;
     grid-template-areas: "heading navigation icons";
@@ -27,36 +27,82 @@
     padding-bottom: 1.2rem;
   }
 
-  .dev-ys-header .header__heading {
+  /* logo: h1 on homepage, plain link on other pages */
+  header.dev-ys-header > .dev-ys-header__heading,
+  header.dev-ys-header > .header__heading-link {
     grid-area: heading;
+    justify-self: start;
     margin: 0;
   }
 
-  .dev-ys-header .header__inline-menu {
+  /* nav (works for dropdown and mega, whatever its class is) */
+  header.dev-ys-header > nav {
+    display: block;
     grid-area: navigation;
     justify-self: start;
     margin: 0;
   }
 
-  .dev-ys-header .header__inline-menu .list-menu--inline {
+  header.dev-ys-header > nav .list-menu--inline {
     display: flex;
     align-items: center;
     gap: 2.4rem;
   }
 
-  .dev-ys-header .header__icons {
+  header.dev-ys-header > .header__icons {
     grid-area: icons;
+    justify-self: end;
     display: flex;
     align-items: center;
-    justify-self: end;
     gap: 1.6rem;
+  }
+
+  /* left-side search copy would create a second row */
+  header.dev-ys-header > .header__search {
+    display: none;
   }
 }
 
-.dev-ys-header .header__menu-item {
-  padding: 0.8rem 0;
+/* Mobile / tablet: menu button | logo | icons */
+@media screen and (max-width: 989px) {
+  header.dev-ys-header {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-areas: "drawer search heading icons";
+    align-items: center;
+    column-gap: 0.8rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  header.dev-ys-header > header-drawer { grid-area: drawer; }
+  header.dev-ys-header > .header__search { grid-area: search; }
+
+  header.dev-ys-header > .dev-ys-header__heading,
+  header.dev-ys-header > .header__heading-link {
+    grid-area: heading;
+    justify-self: center;
+    margin: 0;
+  }
+
+  header.dev-ys-header > .header__icons {
+    grid-area: icons;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+  }
+
+  /* desktop nav must not show on small screens */
+  header.dev-ys-header > nav { display: none; }
 }
 
+/* logo wrapper (renamed class in your Liquid) */
+.header__dev-ys-heading-logo-wrapper {
+  display: inline-block;
+  line-height: 0;
+}
+
+/* menu item look */
 .dev-ys-header .header__menu-item span {
   font-size: 20px;
   font-weight: 600;
@@ -72,20 +118,12 @@
 }
 
 /* ===== 3. HEADER ICONS ===== */
-.dev-ys-header .header__icons .header__icon,
-.dev-ys-header .header__icons .dev-ys-cart-icon,
-.dev-ys-header .header__icons .dev-ys-account-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dev-ys-header .header__icons .dev-ys-cart-icon svg,
-.dev-ys-header .header__icons .dev-ys-account-icon svg {
+.header__icons .dev-ys-cart-icon svg,
+.header__icons .dev-ys-account-icon svg {
   width: 28px;
   height: 28px;
+  min-height: 28px;
 }
-
  
    4. COLLECTION HEADING
    
@@ -637,34 +675,3 @@
 
 
 
-@media screen and (min-width: 990px) {
-  .section-header header.header {
-    display: grid !important;
-    grid-template-columns: auto 1fr auto;
-    grid-template-areas: "heading navigation icons" !important;
-    align-items: center;
-    column-gap: 4rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-
-  .section-header .header__heading,
-  .section-header .header__heading-link {
-    grid-area: heading;
-    margin: 0;
-  }
-
-  .section-header .header__inline-menu {
-    grid-area: navigation;
-    justify-self: start;
-    margin: 0;
-  }
-
-  .section-header .header__icons {
-    grid-area: icons;
-    justify-self: end;
-    display: flex;
-    align-items: center;
-    gap: 1.6rem;
-  }
-}
