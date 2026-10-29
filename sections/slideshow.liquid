@@ -125,12 +125,11 @@
       
 <div class="dev-ys-slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
   {% if block.settings.collection != blank %}
-    <a
-      href="{{ block.settings.collection.url }}"
-      class="dev-ys-slideshow__collection-link"
-      aria-label="{{ block.settings.collection.title | escape }}"
-    >
-  {% endif %}
+  <a
+    href="{{ block.settings.collection.url }}"
+    class="dev-ys-slideshow__collection-link"
+  >
+{% endif %}
 
   {%- if block.settings.image -%}
     {%- liquid
