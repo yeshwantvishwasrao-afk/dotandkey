@@ -63,26 +63,36 @@
   }
 }
 
-/* Mobile / tablet: menu button | logo | icons */
-@media screen and (max-width: 989px) {
+@media screen and (min-width: 990px) {
   header.dev-ys-header {
     display: grid;
-    grid-template-columns: auto auto 1fr auto;
-    grid-template-areas: "drawer search heading icons";
+    grid-template-columns: auto 1fr minmax(260px, 380px) auto;
+    grid-template-areas:
+      "heading . search icons"
+      "navigation navigation navigation navigation";
     align-items: center;
-    column-gap: 0.8rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    column-gap: 3rem;
+    row-gap: 0;
+    padding-top: 1.2rem;
+    padding-bottom: 0;
   }
 
-  header.dev-ys-header > header-drawer { grid-area: drawer; }
-  header.dev-ys-header > .header__search { grid-area: search; }
-
+  /* row 1: logo | search | icons */
   header.dev-ys-header > .dev-ys-header__heading,
   header.dev-ys-header > .header__heading-link {
     grid-area: heading;
-    justify-self: center;
+    justify-self: start;
     margin: 0;
+  }
+
+  header.dev-ys-header > .header__search {
+    grid-area: search;
+    width: 100%;
+  }
+
+  /* hide the duplicate search copy inside the icons group */
+  header.dev-ys-header .header__icons .header__search {
+    display: none;
   }
 
   header.dev-ys-header > .header__icons {
@@ -90,32 +100,42 @@
     justify-self: end;
     display: flex;
     align-items: center;
+    gap: 2rem;
   }
 
-  /* desktop nav must not show on small screens */
-  header.dev-ys-header > nav { display: none; }
+  /* icon order: cart, then account */
+  header.dev-ys-header .header__icon--cart { order: 1; }
+  header.dev-ys-header shopify-account     { order: 2; }
+
+  /* row 2: centered menu with a full-width line above it */
+  header.dev-ys-header > nav {
+    display: block;
+    grid-area: navigation;
+    justify-self: center;
+    position: relative;
+    margin-top: 1.2rem;
+    padding: 1.4rem 0;
+  }
+
+  header.dev-ys-header > nav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    border-top: 1px solid #ececec;
+  }
+
+  header.dev-ys-header > nav .list-menu--inline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 4.5rem;
+  }
 }
 
-/* logo wrapper (renamed class in your Liquid) */
-.header__dev-ys-heading-logo-wrapper {
-  display: inline-block;
-  line-height: 0;
-}
-
-/* menu item look */
-.dev-ys-header .header__menu-item span {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  display: flex;
-  justify-content: center;
-}
-
-.dev-ys-header .header__menu-item:hover,
-.dev-ys-header .header__menu-item:hover span {
-  color: #ff40b1;
-  text-decoration: none;
-}
 
 /* ===== 3. HEADER ICONS ===== */
 .header__icons .dev-ys-cart-icon svg,
