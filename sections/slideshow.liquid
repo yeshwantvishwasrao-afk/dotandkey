@@ -26,7 +26,7 @@
 {%- endif -%}
 
 <slideshow-component
-  class="dev-ys-slider-mobile-gutter{% if section.settings.layout == 'grid' %} page-width{% endif %}{% if section.settings.show_text_below %} mobile-text-below{% endif %}"
+  class="slider-mobile-gutter{% if section.settings.layout == 'grid' %} page-width{% endif %}{% if section.settings.show_text_below %} mobile-text-below{% endif %}"
   role="region"
   aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
   aria-label="{{ section.settings.accessibility_info | escape }}"
@@ -122,49 +122,44 @@
         aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
         tabindex="-1"
       >
-      
-<div class="dev-ys-slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
-  {% if block.settings.collection != blank %}
-  <a
-    href="{{ block.settings.collection.url }}"
-    class="dev-ys-slideshow__collection-link"
-  >
-{% endif %}
-
-  {%- if block.settings.image -%}
-    {%- liquid
-      assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
-      assign sizes = '100vw'
-      assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
-      assign fetch_priority = 'auto'
-      if section.index == 1
-        assign fetch_priority = 'high'
-      endif
-    -%}
-
-    {% if forloop.first %}
-      {{
-        block.settings.image
-        | image_url: width: 3840
-        | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority
-      }}
-    {% else %}
-      {{
-        block.settings.image
-        | image_url: width: 3840
-        | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
-      }}
-    {% endif %}
-  {%- else -%}
-    {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
-  {%- endif -%}
-
-  {% if block.settings.collection != blank %}
-    </a>
-  {% endif %}
-  
-</div>
-
+        <div class="slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}">
+          {%- if block.settings.image -%}
+            {%- liquid
+              assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
+              if section.settings.image_behavior == 'ambient'
+                assign sizes = '120vw'
+                assign widths = '450, 660, 900, 1320, 1800, 2136, 2400, 3600, 7680'
+              else
+                assign sizes = '100vw'
+                assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+              endif
+              assign fetch_priority = 'auto'
+              if section.index == 1
+                assign fetch_priority = 'high'
+              endif
+            -%}
+            {%- if forloop.first %}
+              {{
+                block.settings.image
+                | image_url: width: 3840
+                | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority
+              }}
+            {%- else -%}
+              {{
+                block.settings.image
+                | image_url: width: 3840
+                | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
+              }}
+            {%- endif -%}
+          {%- else -%}
+            {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
+            {%- if placeholder_slide == 1 -%}
+              {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- else -%}
+              {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          {%- endif -%}
+        </div>
         {% comment %}
         <div class="slideshow__text-wrapper banner__content banner__content--{{ block.settings.box_align }} page-width{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll and forloop.index == 1 %} scroll-trigger animate--slide-in{% endif %}">
           <div class="slideshow__text banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient slideshow__text--{{ block.settings.text_alignment }} slideshow__text-mobile--{{ block.settings.text_alignment_mobile }}">
@@ -207,7 +202,7 @@
     <div class="slideshow__controls slider-buttons{% if section.settings.show_text_below %} slideshow__controls--border-radius-mobile{% endif %}">
       <button
         type="button"
-        class="slider-button slider-button--prev hidden"
+        class="slider-button slider-button--prev"
         name="previous"
         aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}"
         aria-controls="Slider-{{ section.id }}"
@@ -234,7 +229,7 @@
                 {%- if section.settings.slider_visual == 'numbers' -%}
                   {{ forloop.index -}}
                 {%- else -%}
-                  <span class="dot hidden"></span>
+                  <span class="dot"></span>
                 {%- endif -%}
               </button>
             {%- endfor -%}
@@ -400,41 +395,16 @@
     }
   ],
   "blocks": [
-
-    
-{
-  "type": "collection_item",
-  "name": "Collection",
-  "settings": [
-    {
-      "type": "collection",
-      "id": "collection",
-      "label": "Choose collection"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Collection banner image (optional)"
-    }
-  ]
-},
-
-
-
     {
       "type": "slide",
       "name": "t:sections.slideshow.blocks.slide.name",
       "limit": 5,
       "settings": [
-
         {
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.slideshow.blocks.slide.settings.image.label"
         },
-
-
-        
         {
           "type": "range",
           "id": "image_overlay_opacity",
@@ -611,7 +581,6 @@
           "label": "t:sections.all.colors.label",
           "default": "scheme-1"
         }
-        
       ]
     }
   ],
