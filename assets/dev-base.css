@@ -107,10 +107,14 @@
   }
 
   header.dev-ys-header > .header__icons {
-    grid-area: icons;
-    justify-self: end;
-    display: flex;
-    align-items: center;
+   grid-area: icons;
+  grid-row: 1;            /* same row as the logo */
+  justify-self: end;      /* far right */
+  align-self: center;     /* same vertical position as the logo */
+  margin: 0;              /* removes any margin-left / margin-right */
+  display: flex;
+  align-items: center;
+  gap: 2rem;
   }
 
   /* desktop menu stays hidden on small screens */
