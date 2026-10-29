@@ -63,7 +63,7 @@
             "box_align": "middle-center",
             "text_alignment": "center",
             "text_alignment_mobile": "center",
-            "color_scheme": ""
+            "color_scheme": "scheme-2"
           }
         }
       },
@@ -157,42 +157,6 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "promo_banner_YnYWJp": {
-      "type": "promo-banner",
-      "blocks": {
-        "banner_Kjh7J6": {
-          "type": "banner",
-          "settings": {
-            "image": "shopify://shop_images/banner2nd.webp",
-            "label": "",
-            "collection": ""
-          }
-        },
-        "banner_zpEXrj": {
-          "type": "banner",
-          "settings": {
-            "image": "shopify://shop_images/banner2nd.webp",
-            "label": "",
-            "collection": ""
-          }
-        },
-        "banner_BqRAYz": {
-          "type": "banner",
-          "settings": {
-            "image": "shopify://shop_images/images.jpg",
-            "label": "",
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "banner_Kjh7J6",
-        "banner_zpEXrj",
-        "banner_BqRAYz"
-      ],
-      "name": "Dev YS Promo Banner",
-      "settings": {}
     },
     "featured_collection_QMezaF": {
       "type": "featured-collection",
@@ -315,7 +279,6 @@
   "order": [
     "slideshow_gGfLxn",
     "featured_collection_4UYW6G",
-    "promo_banner_YnYWJp",
     "featured_collection_QMezaF",
     "collection_list_qfFz7X"
   ]
