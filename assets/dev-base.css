@@ -149,7 +149,7 @@ header.dev-ys-header > nav .icon-caret {
 /* ===== 3. HEADER ICONS ===== */
 .header__icons .dev-ys-cart-icon svg,
 .header__icons .dev-ys-account-icon svg {
-  width: 28px;
+  width: 35px;
   height: 28px;
   min-height: 28px;
 }
