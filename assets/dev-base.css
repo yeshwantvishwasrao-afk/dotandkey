@@ -749,47 +749,35 @@ header.dev-ys-header > nav .icon-caret {
 
 
 
-/* DEV-YS short slideshow banner */
+/* DEV-YS: Short promotional collection banner */
 
-@media screen and (min-width: 750px) {
-  .dev-ys-slideshow .dev-ys-slideshow__media {
-    height: 160px !important;
-    padding-bottom: 0 !important;
-  }
-
-  .dev-ys-slideshow .slideshow__slide {
-    height: 160px !important;
-  }
+.dev-ys-slider-mobile-gutter .dev-ys-slideshow__media {
+  height: 160px !important;
+  padding-bottom: 0 !important;
+  overflow: hidden;
 }
 
-@media screen and (max-width: 749px) {
-  .dev-ys-slideshow .dev-ys-slideshow__media {
-    height: 100px !important;
-    padding-bottom: 0 !important;
-  }
-
-  .dev-ys-slideshow .slideshow__slide {
-    height: 100px !important;
-  }
+.dev-ys-slider-mobile-gutter .slideshow__slide {
+  height: 160px !important;
 }
 
-.dev-ys-slideshow .dev-ys-slideshow__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
-.dev-ys-slideshow__collection-link {
+.dev-ys-slider-mobile-gutter .dev-ys-slideshow__collection-link {
   display: block;
   width: 100%;
   height: 100%;
   line-height: 0;
 }
 
-.dev-ys-slideshow__collection-link img {
+.dev-ys-slider-mobile-gutter .dev-ys-slideshow__image {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media screen and (max-width: 749px) {
+  .dev-ys-slider-mobile-gutter .dev-ys-slideshow__media,
+  .dev-ys-slider-mobile-gutter .slideshow__slide {
+    height: 100px !important;
+  }
 }
